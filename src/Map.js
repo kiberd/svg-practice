@@ -11,31 +11,37 @@ import QuadCricle from "./shapes/QuadCricle";
 
 import { useInterval } from "./CustomHooks";
 
+
 const Map = () => {
 
-    const [, updateState] = useState();
-    const forceUpdate = useCallback(() => updateState({}), []);
 
-    console.log('re-render');
-
+    const [init, setInit] = useState(true);
     const [isLoop, setIsLoop] = useState(false);
+
 	const [toggle, setToggle] = useState(false);
 	const [index, setIndex] = useState(0);
 
-    // useInterval(() => {
-    //     // ...
-    //     console.log(isLoop);
-    //     if(isLoop && !toggle) {
-    //         setToggle(!toggle);
-    //     }
-    //   }, 1000);
+    useInterval(() => {
+        // console.log('loop');
+        // console.log("init : ", init);
+        // console.log("isLoop : ", isLoop)
+        if(init && isLoop) {
+            setInit(!init);
+            setToggle(!toggle);
+        }
+    }, 1000);
 
+    const handleRest = () => {
+        // console.log('handleRest');
+        setTimeout( setInit(true), 2000 );
+    };
 
 	return (
 		<>
 			<button
 				type="button"
 				onClick={() => {
+                    setInit(!init);
 					setToggle(!toggle);
 					setIndex(0);
 				}}
@@ -45,6 +51,7 @@ const Map = () => {
 			<button
 				type="button"
 				onClick={() => {
+                    setInit(!init);
 					setToggle(!toggle);
 					setIndex(1);
 				}}
@@ -54,6 +61,7 @@ const Map = () => {
 			<button
 				type="button"
 				onClick={() => {
+                    setInit(!init);
 					setToggle(!toggle);
 					setIndex(2);
 				}}
@@ -62,7 +70,7 @@ const Map = () => {
 			</button>
             <button
 				type="button"
-				onClick={forceUpdate}
+				onClick={ () => { setIsLoop(!isLoop) } }
 			>
 				Random Loop
 			</button>
@@ -12505,13 +12513,15 @@ const Map = () => {
 				/>
 				<path className="cls-12" d="M720,829a3.43,3.43,0,0,1-5,0Z" />
 
-				<Rectangle color={"#1816c9"} toggle={toggle} index={index} />
-				<FirstLine toggle={toggle} index={index} />
-				<Circle color={"#1816c9"} toggle={toggle} index={index} />
-				<SecondLine toggle={toggle} index={index} />
-				<TripleRectangle color={"#1816c9"} toggle={toggle} index={index} />
-				<ThirdLine toggle={toggle} index={index} />
-				<QuadCricle color={"#1816c9"} toggle={toggle} index={index} />
+				<Rectangle color={"#1816c9"} toggle={toggle} index={index} init={init} />
+				<FirstLine toggle={toggle} index={index} init={init} />
+				<Circle color={"#1816c9"} toggle={toggle} index={index} init={init} />
+				<SecondLine toggle={toggle} index={index} init={init} />
+				<TripleRectangle color={"#1816c9"} toggle={toggle} index={index} init={init} />
+				<ThirdLine toggle={toggle} index={index} init={init} />
+				<QuadCricle color={"#1816c9"} toggle={toggle} index={index} init={init} onHandleRest={handleRest} />
+
+
 			</svg>
 		</>
 	);

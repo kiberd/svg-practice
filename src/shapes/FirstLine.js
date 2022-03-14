@@ -3,14 +3,17 @@ import { animated, useSpring } from "react-spring";
 
 import { useAnimatedPath } from "../CustomHooks";
 
-const FirstLine = ({ toggle, index }) => {
+const FirstLine = ({ toggle, index, init }) => {
 
-    // console.log('renderFirstLine');
+    
+
+    const pathRef = useRef(null);
 
 	const animationProps = useAnimatedPath({
 		toggle,
 		delay: 500,
 		config: { duration: 1500 },
+        init,
 	});
 
 	const pathArr = [
@@ -19,9 +22,22 @@ const FirstLine = ({ toggle, index }) => {
 		"M1280,150 c45,140 140,5 190,180",
 	];
 
+    // useEffect(() => {
+
+    //     console.log(pathRef.current);
+    //     // if(pathRef && pathRef.current){
+    //     //     console.log(pathRef.current.style);
+    //     // }
+
+    // } ,[init]);
+    
+
+    
+
 	return (
 		<>
 			<animated.path
+                ref={pathRef}
 				{...animationProps}
 				fill="transparent"
 				stroke="#1210c7"
