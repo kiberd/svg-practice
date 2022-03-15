@@ -1,20 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSpring } from "react-spring";
 
-
-
-
 export const useAnimatedPath = ({ toggle, delay, config, init }) => {
-    
-
-    console.log(init);
+	console.log(init);
 
 	const [length, setLength] = useState(null);
 
 	const animatedStyle = useSpring({
 		strokeDasharray: length,
 		strokeDashoffset: toggle ? 0 : length,
-        visibility: init ? "hidden" : "visible",
+		// visibility: init ? "hidden" : "visible",
 		delay,
 		config,
 	});
@@ -28,11 +23,6 @@ export const useAnimatedPath = ({ toggle, delay, config, init }) => {
 		},
 	};
 };
-
-
-
-
-
 
 export const useInterval = (callback, delay) => {
 	const savedCallback = useRef();
