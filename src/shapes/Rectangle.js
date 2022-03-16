@@ -1,55 +1,39 @@
 import React, { useState, useRef, useEffect } from "react";
-import { animated, useSpring } from "react-spring";
+import { animated, useSpring, useSpringRef } from "react-spring";
 
 import { useAnimatedPath } from "../CustomHooks";
 
-const Rectangle = ({ color, toggle, index, init }) => {
-	// const pathRef = useRef(null);
+const rectArry = [
+    "M913.92,48.17V97.83H864.5c-.73-4-1-34.15-.34-49.66Z",
+    "M1107.83,97.92h-49.66V48.49c4-.71,35.25-.93,49.66-.32Z",
+    "M1301.84,97.91h-49.68V48.48c4-.69,36-.91,49.68-.3Z",
+];
 
-	const animationStrokeProps = useAnimatedPath({
-		toggle,
-		delay: 0,
-		config: { duration: 1000 },
-		init,
-	});
+const Rectangle = ({ color, toggle, init }) => {
+
+	const shapeRef = useRef(null);
+    const springApi = useSpringRef();
 
 	const animationFillStyle = useSpring({
-		fill: toggle ? color : "#b8b8c6",
+        ref: springApi,
+        from: { fillColor: "#b8b8c6" },
+        to: { fillColor: color }, 
 		config: { duration: 1000 },
-		delay: 0,
+		// delay: 0,
+        // loop: true,
 	});
 
 	// useEffect(() => {
-	//     if(init && pathRef && pathRef.current){
-	//         pathRef.current.style.fill = "#b8b8c6";
+	//     if(init && shapeRef && shapeRef.current){
+	//         shapeRef.current.style.fill = "#b8b8c6";
 	//     }
 	// } ,[init]);
 
-	const rectArry = [
-		"M913.92,48.17V97.83H864.5c-.73-4-1-34.15-.34-49.66Z",
-		"M1107.83,97.92h-49.66V48.49c4-.71,35.25-.93,49.66-.32Z",
-		"M1301.84,97.91h-49.68V48.48c4-.69,36-.91,49.68-.3Z",
-	];
-
 	return (
 		<>
-			{/* <animated.path
-                // ref={pathRef}
-				style={{
-					...animationStrokeProps.style,
-					...animationFillStyle,
-				}}
-				fill={init ? "red" : "black"}
-				stroke={"#fff"}
-				strokeWidth={2}
-				// d="M913.92,48.17V97.83H864.5c-.73-4-1-34.15-.34-49.66Z"
-                d={rectArry[index]}
-
-			/> */}
 			<animated.rect
-				style={{
-					...animationFillStyle,
-				}}
+                ref={shapeRef}
+                fill={animationFillStyle.fillColor}
 				id="사각형_59"
 				data-name="사각형 59"
 				width="25"

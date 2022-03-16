@@ -1,19 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 
-const ThirdText = ({ color, toggle }) => {
+const ThirdText = ({ color, toggle, init }) => {
+
+    const shapeRef = useRef(null);
+
 	const animationFillStyle = useSpring({
-		fill: toggle ? color : "#b8b8c6",
+        from: { fillColor: "#b8b8c6" },
+        to: { fillColor: color }, 
 		config: { duration: 1000 },
-		delay: 3000,
+		delay: 4500,
+        loop: init,
 	});
+
+	useEffect(() => {
+	    if(init && shapeRef && shapeRef.current){
+	        shapeRef.current.style.fill = "#b8b8c6";
+	    }
+	} ,[init]);
 
 	return (
 		<>
 			<animated.text
-                style={{
-					...animationFillStyle,
-				}}
+                ref={shapeRef}
+                fill={animationFillStyle.fillColor}
 				id="AI_모형_03"
 				data-name="AI 모형03"
 				transform="translate(1184 2749)"

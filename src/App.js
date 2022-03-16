@@ -4,11 +4,23 @@ import Map3 from "./Map3";
 import React, { useState } from "react";
 
 function App() {
+
+    const [reset ,setReset] = useState(true);
+
 	return (
-		<>	
+        
+		<>
+            <button
+				type="button"
+				onClick={() => {
+					setReset(!reset);
+				}}
+			>
+				Reset
+			</button>	
 			{/* <Map/> */}
 			{/* <Map2 /> */}
-            <Map3/>
+            <Map3 reset={reset}/>
 		</>
 	);
 }
