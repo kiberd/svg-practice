@@ -10,15 +10,15 @@ const FourthText = ({ color, toggle, init, onHandleRest }) => {
         to: { fillColor: color }, 
 		config: { duration: 1000 },
 		delay: 6000,
-        loop: init,
-        onRest: onHandleRest,
+        reset: init,
+        // onRest: onHandleRest,
 	});
 
-	useEffect(() => {
-	    if(init && shapeRef && shapeRef.current){
-	        shapeRef.current.style.fill = "#b8b8c6";
-	    }
-	} ,[init]);
+	// useEffect(() => {
+	//     if(init && shapeRef && shapeRef.current){
+	//         shapeRef.current.style.fill = "#b8b8c6";
+	//     }
+	// } ,[init]);
 
 	return (
 		<>

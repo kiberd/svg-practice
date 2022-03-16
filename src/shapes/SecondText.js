@@ -10,13 +10,14 @@ const SecondText = ({ color, toggle, init }) => {
         to: { fillColor: color }, 
 		config: { duration: 1000 },
 		delay: 3500,
+		reset: init,
 	});
 
-	useEffect(() => {
-	    if(init && shapeRef && shapeRef.current){
-	        shapeRef.current.style.fill = "#b8b8c6";
-	    }
-	} ,[init]);
+	// useEffect(() => {
+	//     if(init && shapeRef && shapeRef.current){
+	//         shapeRef.current.style.fill = "#b8b8c6";
+	//     }
+	// } ,[init]);
 
 	return (
 		<>

@@ -10,7 +10,7 @@ const ThirdText = ({ color, toggle, init }) => {
         to: { fillColor: color }, 
 		config: { duration: 1000 },
 		delay: 4500,
-        loop: init,
+        reset: init,
 	});
 
 	useEffect(() => {

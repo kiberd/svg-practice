@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 
-const FirstText = ({ color, toggle, init }) => {
+const FirstText = ({ color, init, rest }) => {
 
     const shapeRef = useRef(null);
 
@@ -10,20 +10,22 @@ const FirstText = ({ color, toggle, init }) => {
         to: { fillColor: color }, 
 		config: { duration: 1000 },
 		delay: 0,
-        loop: true,
+		reset: init,
 	});
 
-	// useEffect(() => {
-	//     if(init && shapeRef && shapeRef.current){
-	//         shapeRef.current.style.fill = "#b8b8c6";
-	//     }
-	// } ,[init]);
+	const animationRestStyle = useSpring({
+        to: { fillColor: "#b8b8c6" },
+        from: { fillColor: color }, 
+		config: { duration: 0 },
+	});
+
+	
 
 	return (
 		<>
 			<animated.text
                 ref={shapeRef}
-                fill={animationFillStyle.fillColor}
+                fill={rest? animationRestStyle.fillColor : animationFillStyle.fillColor}
 				id="상장기업"
 				transform="translate(1156 2471)"
 				font-size="14"

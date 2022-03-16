@@ -9,11 +9,6 @@ const quadCricleArry = [
 
 const QuadCricle = ({ color, toggle, init }) => {
 	
-	// const animationFillStyle = useSpring({
-	// 	fill: toggle ? color : "#b8b8c6",
-	// 	config: { duration: 1000 },
-	// 	delay: 4500,
-	// });
 
     const shapeRef = useRef(null);
 
@@ -22,14 +17,14 @@ const QuadCricle = ({ color, toggle, init }) => {
         to: { fillColor: color }, 
 		config: { duration: 1000 },
 		delay: 6000,
-        loop: init,
+        reset: init,
 	});
 
-	useEffect(() => {
-	    if(init && shapeRef && shapeRef.current){
-	        shapeRef.current.style.fill = "#b8b8c6";
-	    }
-	} ,[init]);
+	// useEffect(() => {
+	//     if(init && shapeRef && shapeRef.current){
+	//         shapeRef.current.style.fill = "#b8b8c6";
+	//     }
+	// } ,[init]);
 
 
 	return (

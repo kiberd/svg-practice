@@ -21,73 +21,47 @@ import QuadCricle from "./shapes/QuadCricle";
 import FourthText from "./shapes/FourthText";
 
 const Map3 = () => {
-  const [reset, setReset] = useState(false);
-  const [isLoop, setIsLoop] = useState(true);
+  
+  
+  const [init, setInit] = useState(false);
+  const [rest ,setRest] = useState(false);
 
-  const [toggle, setToggle] = useState(false);
-  // const [index, setIndex] = useState(0);
+  // const showStyle = useSpring({
+  //   to: { fillColor: "#1816c9" },
+  //   from: { fillColor: "#b8b8c6" },
+  //   config: { duration: 1000 },
+  //   reset: reset,
+  // });
 
-  // useInterval(() => {
-  // 	// console.log('loop');
-  // 	// console.log("init : ", init);
-  // 	// console.log("isLoop : ", isLoop)
+  // const firstLineRef = useRef(null);
+  // const [firstLineLength, setFirstLineLength] = useState(null);
 
-  // 	// if (init && isLoop) {
-  // 	// 	setInit(!init);
-  // 	// }
+  // useEffect(() => {
+  //   setFirstLineLength(firstLineRef.current.getTotalLength());
+  // }, [firstLineLength]);
 
-  //     console.log(init);
-  //     if (init) setInit(false);
-  // }, 1000);
+  // const lineShowStyle = useSpring({
+  //   to: { firstLineLength: 0 },
+  //   from: { firstLineLength },
+  //   config: { duration: 1000 },
+  //   // loop: true,
+  //   reset: reset,
+  // });
 
-  // const handleRest = () => {
-  // 	console.log("handleRest");
-  // 	setTimeout(setInit(true), 2000);
-  // };
 
-  const showStyleRef = useSpringRef();
+  const handleRest = () => {
+    setRest(true);
+  }
 
-  const showStyle = useSpring({
-    ref: showStyleRef,
-    to: { fillColor: "#1816c9" },
-    from: { fillColor: "#b8b8c6" },
-    config: { duration: 1000 },
-  });
 
-  useEffect(() => {
-    //   console.log(showStyleRef);
-    showStyleRef.start();
-  }, [showStyleRef]);
-
-  const firstLineRef = useRef(null);
-  const [firstLineLength, setFirstLineLength] = useState(null);
-
-  useEffect(() => {
-    setFirstLineLength(firstLineRef.current.getTotalLength());
-  }, [firstLineLength]);
-
-//   const lineShowStyle = useSpring({
-//     to: { firstLineLength: 0 },
-//     from: { firstLineLength },
-//     config: { duration: 1000 },
-//     loop: true,
-//   });
-
-  const [lineShowStyle, api] = useSpring(() => ({
-	firstLineLength: 0,
-  }));
-
-  useEffect(() => {
-    console.log(api);
-	api.start({ firstLineLength: 0, config: { duration: 1000 } });
-  }, [api]);
 
   return (
     <>
       <button
         type="button"
         onClick={() => {
-          setReset(!reset);
+          setInit(true);
+          setRest(false);
         }}
       >
         Reset
@@ -103,7 +77,7 @@ const Map3 = () => {
           <Background />
 
           {/* First shape */}
-          <>
+          {/* <>
             <animated.rect
               fill={showStyle.fillColor}
               id="사각형_59"
@@ -132,26 +106,26 @@ const Map3 = () => {
               transform="translate(2 4.501)"
               fill="transparent"
               stroke="#1210c7"
-              strokeDashoffset={firstLineLength}
+              strokeDashoffset={lineShowStyle.firstLineLength}
               strokeDasharray={firstLineLength}
               strokeWidth={3}
             />
-          </>
+          </> */}
 
-          {/* <Rectangle color={"#1816c9"} toggle={toggle} init={init} />
-					<FirstText color={"#1816c9"} toggle={toggle} init={init}/>
-					<FirstLine color={"#1816c9"} toggle={toggle} init={init} />
+          <Rectangle color={"#1816c9"} init={init} rest={rest}/>
+					<FirstText color={"#1816c9"}  init={init} rest={rest}/>
+					<FirstLine color={"#1816c9"}  init={init} rest={rest} onHandleRest={handleRest}/>
 
-					<Circle color={"#1816c9"} toggle={toggle} init={init}/>
-					<SecondText color={"#1816c9"} toggle={toggle} init={init}/>
-					<SecondLine color={"#1816c9"} toggle={toggle} init={init}/>
+					<Circle color={"#1816c9"}  init={init} rest={rest}/>
+					<SecondText color={"#1816c9"} init={init} rest={rest}/>
+					<SecondLine color={"#1816c9"} init={init} rest={rest}/>
 
-					<TripleRectangle color={"#1816c9"} toggle={toggle} init={init}/>
-					<ThirdText color={"#1816c9"} toggle={toggle} init={init}/>
-					<ThirdLine color={"#1816c9"} toggle={toggle} init={init}/>
+					<TripleRectangle color={"#1816c9"} init={init} rest={rest}/>
+					<ThirdText color={"#1816c9"} init={init} rest={rest}/>
+					<ThirdLine color={"#1816c9"} init={init} rest={rest}/>
 
-					<QuadCricle color={"#1816c9"} toggle={toggle} init={init}/>
-					<FourthText color={"#1816c9"} toggle={toggle} init={init}/> */}
+					<QuadCricle color={"#1816c9"} init={init} rest={rest}/>
+					<FourthText color={"#1816c9"}  init={init} rest={rest} onHandleRest={handleRest}/>
         </g>
       </svg>
     </>

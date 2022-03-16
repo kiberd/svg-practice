@@ -12,19 +12,18 @@ const Circle = ({ color, toggle, init }) => {
     const shapeRef = useRef(null);
 
 	const animationFillStyle = useSpring({
-		// fill: toggle ? color : "#b8b8c6",
         from: { fillColor: "#b8b8c6" },
         to: { fillColor: color }, 
 		config: { duration: 1000 },
 		delay: 3500,
-        loop: init,
+        reset: init,
 	});
 
-	useEffect(() => {
-	    if(init && shapeRef && shapeRef.current){
-	        shapeRef.current.style.fill = "#b8b8c6";
-	    }
-	} ,[init]);
+	// useEffect(() => {
+	//     if(init && shapeRef && shapeRef.current){
+	//         shapeRef.current.style.fill = "#b8b8c6";
+	//     }
+	// } ,[init]);
 
 
 	return (

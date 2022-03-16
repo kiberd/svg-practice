@@ -23,7 +23,7 @@ const ThirdLine = ({ color, toggle, init }) => {
 		to: { length: 0 },
 		delay: 5500,
 		config: { duration: 1200 },
-		loop: init,
+		reset: init,
 	});
 
 	return (
