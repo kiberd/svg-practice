@@ -10,14 +10,14 @@ function App() {
 	return (
         
 		<>
-            <button
+            {/* <button
 				type="button"
 				onClick={() => {
 					setReset(!reset);
 				}}
 			>
 				Reset
-			</button>	
+			</button>	 */}
 			{/* <Map/> */}
 			{/* <Map2 /> */}
             <Map3 reset={reset}/>

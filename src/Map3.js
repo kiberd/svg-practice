@@ -21,185 +21,124 @@ import QuadCricle from "./shapes/QuadCricle";
 import FourthText from "./shapes/FourthText";
 
 const Map3 = () => {
-	const [init, setInit] = useState(false);
-	const [isLoop, setIsLoop] = useState(true);
+  const [reset, setReset] = useState(false);
+  const [isLoop, setIsLoop] = useState(true);
 
-	const [toggle, setToggle] = useState(false);
-	// const [index, setIndex] = useState(0);
+  const [toggle, setToggle] = useState(false);
+  // const [index, setIndex] = useState(0);
 
-	// useInterval(() => {
-	// 	// console.log('loop');
-	// 	// console.log("init : ", init);
-	// 	// console.log("isLoop : ", isLoop)
-        
-	// 	// if (init && isLoop) {
-	// 	// 	setInit(!init);
-	// 	// }
+  // useInterval(() => {
+  // 	// console.log('loop');
+  // 	// console.log("init : ", init);
+  // 	// console.log("isLoop : ", isLoop)
 
-    //     console.log(init);
-    //     if (init) setInit(false);
-	// }, 1000);
+  // 	// if (init && isLoop) {
+  // 	// 	setInit(!init);
+  // 	// }
 
-	// const handleRest = () => {
-	// 	console.log("handleRest");
-	// 	setTimeout(setInit(true), 2000);
-	// };
+  //     console.log(init);
+  //     if (init) setInit(false);
+  // }, 1000);
 
-	
-    const showStyle = useSpring({
-        to: { fillColor: "#1816c9" },
-        from: { fillColor: "#b8b8c6" },
-		config: { duration: 1000 },
-    });
+  // const handleRest = () => {
+  // 	console.log("handleRest");
+  // 	setTimeout(setInit(true), 2000);
+  // };
 
-    const hideStyle = useSpring({
-        to: { fillColor: "#b8b8c6" },
-        from: { fillColor: "#1816c9" },
-		config: { duration: 0 },
-        delay: 5000,
-    });
+  const showStyleRef = useSpringRef();
 
-    const styleRef = useSpringRef();
+  const showStyle = useSpring({
+    ref: showStyleRef,
+    to: { fillColor: "#1816c9" },
+    from: { fillColor: "#b8b8c6" },
+    config: { duration: 1000 },
+  });
 
-	const firstShapeStyle = useSpring({
-		ref: styleRef,
-        to: async (next, cancel) => {
-            await next(showStyle)
-            await next(hideStyle)
-        },
-		from: { fillColor: "#b8b8c6" },
-	});
+  useEffect(() => {
+    //   console.log(showStyleRef);
+    showStyleRef.start();
+  }, [showStyleRef]);
 
-    useEffect(() => {
-        styleRef.start();
-    }, [styleRef]);
+  const firstLineRef = useRef(null);
+  const [firstLineLength, setFirstLineLength] = useState(null);
 
+  useEffect(() => {
+    setFirstLineLength(firstLineRef.current.getTotalLength());
+  }, [firstLineLength]);
 
+//   const lineShowStyle = useSpring({
+//     to: { firstLineLength: 0 },
+//     from: { firstLineLength },
+//     config: { duration: 1000 },
+//     loop: true,
+//   });
 
-    
+  const [lineShowStyle, api] = useSpring(() => ({
+	firstLineLength: 0,
+  }));
 
+  useEffect(() => {
+    console.log(api);
+	api.start({ firstLineLength: 0, config: { duration: 1000 } });
+  }, [api]);
 
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => {
+          setReset(!reset);
+        }}
+      >
+        Reset
+      </button>
 
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="830"
+        height="499"
+        viewBox="0 0 830 499"
+      >
+        <g id="그룹_939" data-name="그룹 939" transform="translate(-963 -2425)">
+          <Background />
 
+          {/* First shape */}
+          <>
+            <animated.rect
+              fill={showStyle.fillColor}
+              id="사각형_59"
+              data-name="사각형 59"
+              width="25"
+              height="25"
+              transform="translate(1168 2425)"
+            />
+            <animated.text
+              fill={showStyle.fillColor}
+              id="상장기업"
+              transform="translate(1156 2471)"
+              font-size="14"
+              font-family="MalgunGothic, Malgun Gothic"
+            >
+              <tspan x="0" y="0">
+                상장기업
+              </tspan>
+            </animated.text>
 
+            <animated.path
+              ref={firstLineRef}
+              id="패스_58"
+              data-name="패스 58"
+              d="M1178.5,2476.5s3.515,33.829,145.676,33.991S1473,2560,1473,2560"
+              transform="translate(2 4.501)"
+              fill="transparent"
+              stroke="#1210c7"
+              strokeDashoffset={firstLineLength}
+              strokeDasharray={firstLineLength}
+              strokeWidth={3}
+            />
+          </>
 
-    const firstLineRef = useRef(null);
-	const [firstLineLength, setFirstLineLength] = useState(null);
-
-    useEffect(() => {
-		setFirstLineLength(firstLineRef.current.getTotalLength());
-	}, [firstLineLength]);
-
-    const lineShowStyle = useSpring({
-        to: { firstLineLength: 0 },
-		from: { firstLineLength },
-		config: { duration: 1000 },
-        
-	});
-
-    const lineHideStyle = useSpring({
-		firstLineLength: 0,
-		config: { duration: 0 },
-        delay: 5000,
-	});
-
-    // const firstLineStyleRef = useSpringRef();
-
-    const firstLineStyle = useSpring({
-		// ref: firstLineStyleRef,
-        to: async (next, cancel) => {
-            await next(lineShowStyle)
-            await next(lineHideStyle)
-        },
-		from: { firstLineLength },
-	});
-
-    // useEffect(() => {
-    //     firstLineStyleRef.start();
-    // } ,[firstLineStyle])
-
-    
-
-
-
-    
-
-    // useChain( !init ? [firstShapeShowApi, firstLineShowApi] : [firstShapeHideApi, firstLineHideApi], !init ? [0, 1] : [0, 0], 2000 );
-    // useChain( [firstShapeShowApi, firstLineShowApi], [0, 1], 2000 );
-
-	return (
-		<>
-			<button
-				type="button"
-				onClick={() => {
-					setInit(!init);
-					setToggle(!toggle);
-					// setIndex(0);
-				}}
-			>
-				Toggle scenario 1 animation
-			</button>
-			<button
-				type="button"
-				onClick={() => {
-					setIsLoop(!isLoop);
-				}}
-			>
-				Random Loop
-			</button>
-
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="830"
-				height="499"
-				viewBox="0 0 830 499"
-			>
-				<g
-					id="그룹_939"
-					data-name="그룹 939"
-					transform="translate(-963 -2425)"
-				>
-					<Background />
-
-					{/* First shape */}
-					<animated.rect
-						fill={firstShapeStyle.fillColor}
-                        
-						id="사각형_59"
-						data-name="사각형 59"
-						width="25"
-						height="25"
-						transform="translate(1168 2425)"
-					/>
-					<animated.text
-						fill={firstShapeStyle.fillColor}
-                        
-						id="상장기업"
-						transform="translate(1156 2471)"
-						font-size="14"
-						font-family="MalgunGothic, Malgun Gothic"
-					>
-						<tspan x="0" y="0">
-							상장기업
-						</tspan>
-					</animated.text>
-
-
-                    {/* First line */}
-					<animated.path
-						ref={firstLineRef}
-						id="패스_58"
-						data-name="패스 58"
-						d="M1178.5,2476.5s3.515,33.829,145.676,33.991S1473,2560,1473,2560"
-						transform="translate(2 4.501)"
-						fill="transparent"
-						stroke="#1210c7"
-						strokeDashoffset={firstLineStyle.firstLineLength}
-						strokeDasharray={firstLineLength}
-						strokeWidth={3}
-					/>
-
-					{/* <Rectangle color={"#1816c9"} toggle={toggle} init={init} />
+          {/* <Rectangle color={"#1816c9"} toggle={toggle} init={init} />
 					<FirstText color={"#1816c9"} toggle={toggle} init={init}/>
 					<FirstLine color={"#1816c9"} toggle={toggle} init={init} />
 
@@ -213,10 +152,10 @@ const Map3 = () => {
 
 					<QuadCricle color={"#1816c9"} toggle={toggle} init={init}/>
 					<FourthText color={"#1816c9"} toggle={toggle} init={init}/> */}
-				</g>
-			</svg>
-		</>
-	);
+        </g>
+      </svg>
+    </>
+  );
 };
 
 export default Map3;
