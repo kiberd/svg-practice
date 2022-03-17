@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 
-const ThirdText = ({ color, toggle, init }) => {
+const ThirdText = ({ color, init, rest }) => {
 
     const shapeRef = useRef(null);
 
@@ -14,10 +14,12 @@ const ThirdText = ({ color, toggle, init }) => {
 	});
 
 	useEffect(() => {
-	    if(init && shapeRef && shapeRef.current){
-	        shapeRef.current.style.fill = "#b8b8c6";
-	    }
-	} ,[init]);
+		if (rest && shapeRef && shapeRef.current) {
+            setTimeout(() => {
+                shapeRef.current.setAttribute("fill", "#b8b8c6");
+            }, 3000);
+		}
+	}, [rest, shapeRef]);
 
 	return (
 		<>

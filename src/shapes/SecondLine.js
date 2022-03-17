@@ -1,15 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 
-import { useAnimatedPath } from "../CustomHooks";
-
 const pathArr = [
     "M1085,460 c-53,128 -336,-16 -387,138",
     "M885,460 c-53,128 -336,-16 -387,138",
     "M1470,460 c-53,128 -336,-16 -387,138",
 ];
 
-const SecondLine = ({ color, toggle, init }) => {
+const SecondLine = ({ init, rest }) => {
     
 
     const lineRef = useRef(null);
@@ -26,6 +24,14 @@ const SecondLine = ({ color, toggle, init }) => {
 		config: { duration: 1200 },
 		reset: init,
 	});
+
+    useEffect(() => {
+		if (rest && lineRef && lineRef.current) {
+            setTimeout(() => {
+                lineRef.current.setAttribute("stroke-dashoffset", length);
+            }, 3000);
+		}
+	}, [rest, lineRef]);
 
 	return (
 		<>

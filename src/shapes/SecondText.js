@@ -1,29 +1,30 @@
 import React, { useState, useRef, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 
-const SecondText = ({ color, toggle, init }) => {
-
-    const shapeRef = useRef(null);
+const SecondText = ({ color, init, rest }) => {
+	const shapeRef = useRef(null);
 
 	const animationFillStyle = useSpring({
-        from: { fillColor: "#b8b8c6" },
-        to: { fillColor: color }, 
+		from: { fillColor: "#b8b8c6" },
+		to: { fillColor: color },
 		config: { duration: 1000 },
 		delay: 3500,
 		reset: init,
 	});
 
-	// useEffect(() => {
-	//     if(init && shapeRef && shapeRef.current){
-	//         shapeRef.current.style.fill = "#b8b8c6";
-	//     }
-	// } ,[init]);
+	useEffect(() => {
+		if (rest && shapeRef && shapeRef.current) {
+			setTimeout(() => {
+				shapeRef.current.setAttribute("fill", "#b8b8c6");
+			}, 3000);
+		}
+	}, [rest, shapeRef]);
 
 	return (
 		<>
 			<animated.text
-                ref={shapeRef}
-                fill={animationFillStyle.fillColor}
+				ref={shapeRef}
+				fill={animationFillStyle.fillColor}
 				id="가치_적정성"
 				data-name="가치적정성"
 				transform="translate(1474 2609)"

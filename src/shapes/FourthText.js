@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 
-const FourthText = ({ color, toggle, init, onHandleRest }) => {
+const FourthText = ({ color, init, rest, onHandleRest }) => {
 
 	const shapeRef = useRef(null);
 
@@ -9,16 +9,18 @@ const FourthText = ({ color, toggle, init, onHandleRest }) => {
         from: { fillColor: "#b8b8c6" },
         to: { fillColor: color }, 
 		config: { duration: 1000 },
-		delay: 6000,
+		delay: 6500,
         reset: init,
-        // onRest: onHandleRest,
+        onRest: onHandleRest,
 	});
 
-	// useEffect(() => {
-	//     if(init && shapeRef && shapeRef.current){
-	//         shapeRef.current.style.fill = "#b8b8c6";
-	//     }
-	// } ,[init]);
+	useEffect(() => {
+		if (rest && shapeRef && shapeRef.current) {
+            setTimeout(() => {
+                shapeRef.current.setAttribute("fill", "#b8b8c6");
+            } ,3000);
+		}
+	}, [rest, shapeRef]);
 
 	return (
 		<>

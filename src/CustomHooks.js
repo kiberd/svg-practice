@@ -1,13 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSpring } from "react-spring";
 
-
-
-
-
-
 export const useAnimatedPath = ({ toggle, delay, config, init }) => {
-
 	const [length, setLength] = useState(null);
 
 	const animatedStyle = useSpring({
@@ -16,7 +10,7 @@ export const useAnimatedPath = ({ toggle, delay, config, init }) => {
 		// visibility: init ? "hidden" : "visible",
 		delay,
 		config,
-        reset: true,
+		reset: true,
 	});
 
 	return {
@@ -29,11 +23,31 @@ export const useAnimatedPath = ({ toggle, delay, config, init }) => {
 	};
 };
 
+export const useWindowFocus = () => {
+	// User has switched back to the tab
+	const onFocus = () => {
+		console.log("Tab is in focus");
+	};
 
+	// User has switched away from the tab (AKA tab is hidden)
+	const onBlur = () => {
+		console.log("Tab is blurred");
+	};
 
+	useEffect(() => {
+		window.addEventListener("focus", onFocus);
+		window.addEventListener("blur", onBlur);
+		// Calls onFocus when the window first loads
+		onFocus();
+		// Specify how to clean up after this effect:
+		return () => {
+			window.removeEventListener("focus", onFocus);
+			window.removeEventListener("blur", onBlur);
+		};
+	}, []);
 
-
-
+    return { onFocus, onBlur };
+};
 
 
 export const useInterval = (callback, delay) => {

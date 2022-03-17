@@ -10,7 +10,7 @@ const rectangleArry = [
 ];
 
 
-const TripleRectangle = ({ color, toggle, init }) => {
+const TripleRectangle = ({ color, init, rest }) => {
 	
     const shapeRef = useRef(null);
 
@@ -22,11 +22,13 @@ const TripleRectangle = ({ color, toggle, init }) => {
         reset: init,
 	});
 
-	// useEffect(() => {
-	//     if(init && shapeRef && shapeRef.current){
-	//         shapeRef.current.style.fill = "#b8b8c6";
-	//     }
-	// } ,[init]);
+	useEffect(() => {
+		if (rest && shapeRef && shapeRef.current) {
+            setTimeout(() => {
+                shapeRef.current.setAttribute("fill", "#b8b8c6");
+            }, 3000);
+		}
+	}, [rest, shapeRef]);
 
 	return (
 		<>
