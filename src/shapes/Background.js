@@ -64,9 +64,9 @@ function rand(min, max) {
 };
 
 
-const Background = ({ svgRefState }) => {
+const Background = ({ rest, svgRefState, onHandleCoordinate }) => {
 
-    const [coordinateDataSet, setCoordinateDataSet] = useState({...shapes, ...texts, ...lines});
+    const [coordinateDataSet, setCoordinateDataSet] = useState();
 
 
     useEffect(() => {
@@ -74,7 +74,7 @@ const Background = ({ svgRefState }) => {
         
         
 
-        if (svgRefState){
+        if (rest && svgRefState){
 
             const coordinateData = {};
 
@@ -109,8 +109,7 @@ const Background = ({ svgRefState }) => {
             // Set firstLine (random number)
             const firstLineElement = firstLines[rand(0, firstLines.length - 1)];
 
-
-            console.log(firstLineElement);
+            // console.log(firstLineElement);
 
             const firstLineObj = {};
             firstLineObj.id = firstLineElement.getAttribute("id");
@@ -127,15 +126,25 @@ const Background = ({ svgRefState }) => {
 
             
             // start 구하기 위한 x
-            const targetFirstElementX = firstLineTranslateX + firstLineMoveToX;
+            const firstLineStartOffset = firstLineTranslateX + firstLineMoveToX;
 
             // end 구하기 위한 x
-            let targetEndElementX;
+            let firstLineEndOffset;
 
-            if (firstLineTranslateX < 0) {
-                targetEndElementX = firstLineTranslateX + firstLineMoveToX - firstLineElement.getBoundingClientRect().width;
+            // Curve direction
+            let curveDirection;
+            const pathId = firstLineElement.getAttribute("id").split("_")[1];
+            // 86, 140, 249 -> 이상한 값
+            if(pathId === "86"){
+                curveDirection = 0;
             } else {
-                targetEndElementX = firstLineTranslateX + firstLineMoveToX + firstLineElement.getBoundingClientRect().width;
+                curveDirection = Number(firstLineElement.getAttribute("d").split('s')[1].split(',')[0]);
+            }
+            
+            if (curveDirection < - 0.1) {
+                firstLineEndOffset = firstLineTranslateX + firstLineMoveToX - firstLineElement.getBoundingClientRect().width;
+            } else {
+                firstLineEndOffset = firstLineTranslateX + firstLineMoveToX + firstLineElement.getBoundingClientRect().width;
             }
 
   
@@ -146,12 +155,11 @@ const Background = ({ svgRefState }) => {
                 // 맨 처음 사각형
                 if (node.tagName === "rect" && node.getAttribute("data-name").split(' ')[0] === "사각형" && !node.getAttribute("rx") ){
 
-                    // 예외처리 체크
                     const transformText = node.getAttribute("transform").split(' ')[0];
                     const rectangleTranslateX = Number(node.getAttribute("transform").split(' ')[0].slice(10, transformText.length));
 
                     // 간격에 들어오면
-                    if (targetFirstElementX - 50 < rectangleTranslateX && rectangleTranslateX < targetFirstElementX + 50){
+                    if (firstLineStartOffset - 50 < rectangleTranslateX && rectangleTranslateX < firstLineStartOffset + 50){
                         targetRectangleElement = node;
                     }
 
@@ -174,7 +182,7 @@ const Background = ({ svgRefState }) => {
 
                     const firstTextTranslateX = Number(node.getAttribute("transform").split(' ')[0].slice(10, 14));
                     // 간격에 들어오면
-                    if (targetFirstElementX - 50 < firstTextTranslateX && firstTextTranslateX < targetFirstElementX + 50){
+                    if (firstLineStartOffset - 50 < firstTextTranslateX && firstTextTranslateX < firstLineStartOffset + 50){
                         targetFirstTextElement = node;
                     }
                 }
@@ -190,6 +198,9 @@ const Background = ({ svgRefState }) => {
 
 
 
+
+
+
             let targetCircleElement;
             svgRefState.childNodes.forEach((node) => {
                 // First text
@@ -199,36 +210,295 @@ const Background = ({ svgRefState }) => {
                     const circleTranslateX = node.getAttribute("transform").split(' ')[0].slice(10, transformText.length);
 
                     // 간격에 들어오면
-                    if (targetEndElementX - 50 < circleTranslateX && circleTranslateX < targetEndElementX + 50){
+                    if (firstLineEndOffset - 50 < circleTranslateX && circleTranslateX < firstLineEndOffset + 50){
                         targetCircleElement = node;
                     }
                 }
             });
 
-            console.log(targetCircleElement);
+            // console.log(targetCircleElement);
+
+            const circleObj = {};
+            circleObj.id = targetCircleElement.getAttribute("id");
+            circleObj.transform = targetCircleElement.getAttribute("transform");
+
+            coordinateData.circle = circleObj;
+
+
+
+
+
+
+            // Set Second Text
+            let targetSecondTextElement;
+            svgRefState.childNodes.forEach((node) => {
+                // Second text
+                if (node.tagName === "text" && Number(node.getAttribute("transform").split(' ')[1].slice(0, -1)) === 2609){
+
+                    const secondTextTranslateX = Number(node.getAttribute("transform").split(' ')[0].slice(10, 14));
+                    
+                    // 간격에 들어오면
+                    if (firstLineEndOffset - 50 < secondTextTranslateX && secondTextTranslateX < firstLineEndOffset + 50){
+                        targetSecondTextElement = node;
+                    }
+                }
+            });
+
+            const secondTextObj = {};
+            secondTextObj.id = targetSecondTextElement.getAttribute("id");
+            secondTextObj.transform = targetSecondTextElement.getAttribute("transform");
+
+            coordinateData.secondText = secondTextObj;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // Set Second Line
+            let secondLineElement;
+            let secondLineCandidate = [];
+            secondLines.forEach((line) => {
+
+                const lineMoveToText = line.getAttribute("d").split(",")[0];
+                const lineMoveToX = Number(line.getAttribute("d").split(",")[0].substring(1, lineMoveToText.length));
+ 
+                const lineTranslateText = line.getAttribute("transform").split(' ')[0];
+                const lineTranslateX = Number(line.getAttribute("transform").split(' ')[0].substring(10, lineTranslateText.length));
+
+                if (firstLineEndOffset - 50 < lineMoveToX + lineTranslateX && lineMoveToX + lineTranslateX < firstLineEndOffset + 50){
+                    secondLineCandidate.push(line);
+                }
+
+            });
+
+            secondLineElement = secondLineCandidate[rand(0, 8)];
+
+            const secondLineObj = {};
+            secondLineObj.id = secondLineElement.getAttribute("id");
+            secondLineObj.transform = secondLineElement.getAttribute("transform");
+            secondLineObj.d = secondLineElement.getAttribute("d");
+
+            // console.log(secondLineElement);
+
+            coordinateData.secondLine = secondLineObj;
+
+
+            const secondLineMoveToText = secondLineElement.getAttribute("d").split(",")[0];
+            const secondLineMoveToX = Number(secondLineElement.getAttribute("d").split(",")[0].substring(1, secondLineMoveToText.length));
+ 
+            const secondLineTranslateText = secondLineElement.getAttribute("transform").split(' ')[0];
+            const secondLineTranslateX = Number(secondLineElement.getAttribute("transform").split(' ')[0].substring(10, secondLineTranslateText.length));
+
+
+            // end 구하기 위한 x
+            let secondLineEndOffset;
+
+            // Curve direction
+            let secondLineCurveDirection;
+            const secondPathId = secondLineElement.getAttribute("id").split("_")[1];
+            // 86, 140, 249 -> 이상한 값
+            if(secondPathId === "140"){
+                secondLineCurveDirection = 0;
+            } else {
+                secondLineCurveDirection = Number(secondLineElement.getAttribute("d").split('s')[1].split(',')[0]);
+            }
+            
+            if (secondLineCurveDirection < - 0.1) {
+                secondLineEndOffset = secondLineTranslateX + secondLineMoveToX - secondLineElement.getBoundingClientRect().width;
+            } else {
+                secondLineEndOffset = secondLineTranslateX + secondLineMoveToX + secondLineElement.getBoundingClientRect().width;
+            }
+
+
+
+
+
+
+            // Set TripleRectangle
+            let targetTripleRectangleElement;
+            svgRefState.childNodes.forEach((node) => {
+
+                
+                if (node.tagName === "g" && node.childNodes[0].childNodes[0].getAttribute("data-name").split(' ')[1] === "540"){
+                    
+                    const transformText = node.getAttribute("transform").split(' ')[0];
+                    const tripleRectangleTranslateX = node.getAttribute("transform").split(' ')[0].slice(10, transformText.length);
+
+                    // 간격에 들어오면
+                    if (secondLineEndOffset - 50 < tripleRectangleTranslateX && tripleRectangleTranslateX < secondLineEndOffset + 50){
+                        targetTripleRectangleElement = node;
+                    }
+                }
+
+            });
+
+            const tripleRectangleObj = {};
+            tripleRectangleObj.id = targetTripleRectangleElement.childNodes[0].childNodes[0].getAttribute("id");
+            tripleRectangleObj.transform = targetTripleRectangleElement.getAttribute("transform");
+            tripleRectangleObj.d = targetTripleRectangleElement.childNodes[0].childNodes[0].getAttribute("d");
+            coordinateData.tripleRectangle = tripleRectangleObj;
+
+            // console.log(targetTripleRectangleElement);
 
             
+            // Set ThirdText
+            let targetThirdTextElement;
+            svgRefState.childNodes.forEach((node) => {
+                // Second text
+                if (node.tagName === "text" && Number(node.getAttribute("transform").split(' ')[1].slice(0, -1)) === 2749){
+
+                    const thirdTextTranslateX = Number(node.getAttribute("transform").split(' ')[0].slice(10, 14));
+                    
+                    // 간격에 들어오면
+                    if (secondLineEndOffset - 50 < thirdTextTranslateX && thirdTextTranslateX < secondLineEndOffset + 50){
+                        targetThirdTextElement = node;
+                    }
+                }
+            });
+
+            const thirdTextObj = {};
+            thirdTextObj.id = targetThirdTextElement.getAttribute("id");
+            thirdTextObj.transform = targetThirdTextElement.getAttribute("transform");
+
+            coordinateData.thirdText = thirdTextObj;
+
+            // console.log(targetThirdTextElement);
+
+
 
 
             
+            // Set third Line
+            let thirdLineElement;
+            let thirdLineCandidate = [];
+            thirdLines.forEach((line) => {
+
+                const lineMoveToText = line.getAttribute("d").split(",")[0];
+                const lineMoveToX = Number(line.getAttribute("d").split(",")[0].substring(1, lineMoveToText.length));
+ 
+                const lineTranslateText = line.getAttribute("transform").split(' ')[0];
+                const lineTranslateX = Number(line.getAttribute("transform").split(' ')[0].substring(10, lineTranslateText.length));
+
+                if (secondLineEndOffset - 50 < lineMoveToX + lineTranslateX && lineMoveToX + lineTranslateX < secondLineEndOffset + 50){
+                    thirdLineCandidate.push(line);
+                }
+
+            });
+
+            thirdLineElement = thirdLineCandidate[rand(0, 8)];
+
+            const thirdLineObj = {};
+            thirdLineObj.id = thirdLineElement.getAttribute("id");
+            thirdLineObj.transform = thirdLineElement.getAttribute("transform");
+            thirdLineObj.d = thirdLineElement.getAttribute("d");
+
+            // console.log(thirdLineElement);
+
+            coordinateData.thirdLine = thirdLineObj;
 
 
 
 
+            const thirdLineMoveToText = thirdLineElement.getAttribute("d").split(",")[0];
+            const thirdLineMoveToX = Number(thirdLineElement.getAttribute("d").split(",")[0].substring(1, thirdLineMoveToText.length));
+ 
+            const thirdLineTranslateText = thirdLineElement.getAttribute("transform").split(' ')[0];
+            const thirdLineTranslateX = Number(thirdLineElement.getAttribute("transform").split(' ')[0].substring(10, thirdLineTranslateText.length));
+
+
+            // end 구하기 위한 x
+            let thirdLineEndOffset;
+
+            // Curve direction
+            let thirdLineCurveDirection;
+            const thirdPathId = thirdLineElement.getAttribute("id").split("_")[1];
+            // 86, 140, 249 -> 이상한 값
+            if(secondPathId === "249"){
+                thirdLineCurveDirection = 0;
+            } else {
+                thirdLineCurveDirection = Number(thirdLineElement.getAttribute("d").split('s')[1].split(',')[0]);
+            }
+            
+            if (thirdLineCurveDirection < - 0.1) {
+                thirdLineEndOffset = thirdLineTranslateX + thirdLineMoveToX - thirdLineElement.getBoundingClientRect().width;
+            } else {
+                thirdLineEndOffset = thirdLineTranslateX + thirdLineMoveToX + thirdLineElement.getBoundingClientRect().width;
+            }
+
+
+
+
+            // Set QuadCircle
+            let targetQuadCircleElement;
+            svgRefState.childNodes.forEach((node) => {
+
+                
+                if (node.tagName === "g" && node.childNodes[0].childNodes[0].getAttribute("data-name").split(' ')[1] === "541"){
+                    
+                    const transformText = node.getAttribute("transform").split(' ')[0];
+                    const quadCircleTranslateX = node.getAttribute("transform").split(' ')[0].slice(10, transformText.length);
+
+                    // 간격에 들어오면
+                    if (thirdLineEndOffset - 50 < quadCircleTranslateX && quadCircleTranslateX < thirdLineEndOffset + 50){
+                        targetQuadCircleElement = node;
+                    }
+                }
+
+            });
+
+            const quadCircleObj = {};
+            quadCircleObj.id = targetQuadCircleElement.childNodes[0].childNodes[0].getAttribute("id");
+            quadCircleObj.transform = targetQuadCircleElement.getAttribute("transform");
+            quadCircleObj.d = targetQuadCircleElement.childNodes[0].childNodes[0].getAttribute("d");
+            coordinateData.quadCircle = quadCircleObj;
+
+            // console.log(targetQuadCircleElement);
+
+
+
+             // Set FourthText
+             let targetFourthTextElement;
+             svgRefState.childNodes.forEach((node) => {
+                 // Fourth text
+                 if (node.tagName === "text" && Number(node.getAttribute("transform").split(' ')[1].slice(0, -1)) === 2904){
+ 
+                     const fourthTextTranslateX = Number(node.getAttribute("transform").split(' ')[0].slice(10, 14));
+                     
+                     // 간격에 들어오면
+                     if (thirdLineEndOffset - 50 < fourthTextTranslateX && fourthTextTranslateX < thirdLineEndOffset + 50){
+                        targetFourthTextElement = node;
+                     }
+                 }
+             });
+ 
+             const fourthTextObj = {};
+             fourthTextObj.id = targetFourthTextElement.getAttribute("id");
+             fourthTextObj.transform = targetFourthTextElement.getAttribute("transform");
+ 
+             coordinateData.fourthText = fourthTextObj;
+
+
+             setCoordinateDataSet(coordinateData);
 
         }
         
-    } ,[svgRefState]);
+    } ,[rest, svgRefState]);
 
-    const selectLines = () => {
-
-        const yCoordArry = [4.50, 159, 302];
-
-
-
-    };
-
-   
+    useEffect(() => {
+        if (coordinateDataSet){
+            onHandleCoordinate(coordinateDataSet);
+        }
+    }, [coordinateDataSet])
 
 
 	return (
@@ -1305,18 +1575,7 @@ const Background = ({ svgRefState }) => {
 			<path
 				id="패스_59"
 				data-name="패스 59"
-				d="
-                
-                M 1178.5, 2476.5
-                
-                s 4.672, 33.829, 193.658, 33.991
-                
-                S 1570, 2560, 1570, 2560
-                
-                
-                "
-				
-                
+				d="M1178.5,2476.5s4.672,33.829,193.658,33.991S1570,2560,1570,2560"
                 transform="translate(2 4.501)"
 				fill="none"
 				stroke="#b8b8c6"

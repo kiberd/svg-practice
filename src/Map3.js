@@ -21,30 +21,32 @@ import { useEventListener } from "./CustomHooks";
 
 const Map3 = () => {
 
-	// const [init, setInit] = useState(false);
-	// const [rest, setRest] = useState(false);
+	const [init, setInit] = useState(false);
+	const [rest, setRest] = useState(false);
 
-    // useEffect(() => {
-    //     let timer;
-    //     if (rest && !init) {
-    //         timer = setTimeout(animationStart, 5000);
-    //     }
-    //     return () => clearTimeout(timer);
-    // } ,[rest, init]);
+    const [coordinateData, setCoordinateData] = useState();
+
+    useEffect(() => {
+        let timer;
+        if (rest && !init) {
+            timer = setTimeout(animationStart, 5000);
+        }
+        return () => clearTimeout(timer);
+    } ,[rest, init]);
     
-    // const handleRest = () => {
-    //     animationStop();
-    // };
+    const handleRest = () => {
+        animationStop();
+    };
 
-    // const animationStart = () => {
-    //     setRest(false);
-    //     setInit(true);
-    // };
+    const animationStart = () => {
+        setRest(false);
+        setInit(true);
+    };
 
-    // const animationStop = () => {
-    //     setRest(true);
-    //     setInit(false);
-    // };
+    const animationStop = () => {
+        setRest(true);
+        setInit(false);
+    };
 
     const [svgRefState, setSvgRefState] = useState();
 
@@ -58,6 +60,11 @@ const Map3 = () => {
 
     }, [svgRef]);
 
+    const handleCoordinate = (coordinateData) => {
+        console.log(coordinateData);
+        setCoordinateData(coordinateData);
+    };
+
 
 	return (
 		<>
@@ -65,7 +72,10 @@ const Map3 = () => {
 				xmlns="http://www.w3.org/2000/svg"
 				width="830"
 				height="499"
+                // width="1600"
+				// height="900"
 				viewBox="0 0 830 499"
+                // viewBox="0 0 1600 900"
                 
 			>
 				<g
@@ -75,11 +85,10 @@ const Map3 = () => {
                     ref={svgRef}
 				>
 
-					<Background svgRefState={svgRefState}/>
+					<Background rest={rest} svgRefState={svgRefState} onHandleCoordinate={handleCoordinate}/>
 
-				</g>
 					{/* First shape */}
-					{/* <Rectangle color={"#1816c9"} init={init} rest={rest} />
+					<Rectangle color={"#1816c9"} init={init} rest={rest} />
 					<FirstText color={"#1816c9"} init={init} rest={rest} />
 					<FirstLine init={init} rest={rest} />
 
@@ -92,7 +101,8 @@ const Map3 = () => {
 					<ThirdLine init={init} rest={rest} />
 
 					<QuadCricle color={"#1816c9"} init={init} rest={rest} />
-					<FourthText color={"#1816c9"} init={init} rest={rest} onHandleRest={handleRest}/> */}
+					<FourthText color={"#1816c9"} init={init} rest={rest} onHandleRest={handleRest}/>
+				</g>
 			</svg>
 		</>
 	);
