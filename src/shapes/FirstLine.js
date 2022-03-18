@@ -8,6 +8,8 @@ const pathArr = [
 ];
 
 const FirstLine = ({ init, rest }) => {
+
+    
 	const lineRef = useRef(null);
 	const [length, setLength] = useState(null);
 
@@ -23,14 +25,20 @@ const FirstLine = ({ init, rest }) => {
 		reset: init,
 	});
 
+    useEffect(() => {
+        if (init) {
+            lineRef.current.setAttribute("stroke-dashoffset", length);
+        }
+    } ,[init]);
+
 	useEffect(() => {
-		if (rest && lineRef && lineRef.current) {
+		if (rest && length && lineRef && lineRef.current) {
             setTimeout(() => {
                 lineRef.current.setAttribute("stroke-dashoffset", length);
             } ,3000);
 			
 		}
-	}, [rest, lineRef]);
+	}, [rest, length, lineRef]);
 
 	return (
 		<>

@@ -25,25 +25,29 @@ const ThirdLine = ({ init, rest }) => {
 	});
 
     useEffect(() => {
-		if (rest && lineRef && lineRef.current) {
+        if (init) {
+            lineRef.current.setAttribute("stroke-dashoffset", length);
+        }
+    } ,[init]);
+
+    useEffect(() => {
+		if (rest && length && lineRef && lineRef.current) {
             setTimeout(() => {
                 lineRef.current.setAttribute("stroke-dashoffset", length);
             } , 3000);
 		}
-	}, [rest, lineRef]);
+	}, [rest, length, lineRef]);
 
 	return (
 		<>
 			<animated.path
 				ref={lineRef}
-
 				id="패스_214"
 				data-name="패스 214"
 				d="M1178.5,2476.5s3.515,32.666,145.676,32.822S1473,2557.133,1473,2557.133"
 				transform="translate(2 302)"
 				fill="transparent"
 				stroke="#1210c7"
-
 				strokeDashoffset={animatedStyle.length}
 				strokeDasharray={length}
 				strokeWidth={3}

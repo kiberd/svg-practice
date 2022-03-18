@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import Background from "./shapes/Background";
 
@@ -17,44 +17,47 @@ import ThirdLine from "./shapes/ThirdLine";
 import QuadCricle from "./shapes/QuadCricle";
 import FourthText from "./shapes/FourthText";
 
-import { useWindowFocus } from "./CustomHooks";
+import { useEventListener } from "./CustomHooks";
 
 const Map3 = () => {
 
-	const [init, setInit] = useState(false);
-	const [rest, setRest] = useState(false);
+	// const [init, setInit] = useState(false);
+	// const [rest, setRest] = useState(false);
 
-    useEffect(() => {
-        
-        let timer;
-       
-        if (rest && !init) timer = setTimeout(animationStart, 5000);
-        return () => clearTimeout(timer);
-        
-    } ,[rest, init]);
+    // useEffect(() => {
+    //     let timer;
+    //     if (rest && !init) {
+    //         timer = setTimeout(animationStart, 5000);
+    //     }
+    //     return () => clearTimeout(timer);
+    // } ,[rest, init]);
     
-    const handleRest = () => {
-        // setRest(true);
-        // setInit(false);
-        animationStop();
-    };
+    // const handleRest = () => {
+    //     animationStop();
+    // };
 
-    const animationStart = () => {
-        setRest(false);
-        setInit(true);
-    };
+    // const animationStart = () => {
+    //     setRest(false);
+    //     setInit(true);
+    // };
 
-    const animationStop = () => {
-        setRest(true);
-        setInit(false);
-    };
+    // const animationStop = () => {
+    //     setRest(true);
+    //     setInit(false);
+    // };
 
-    const { onFocus, onBlur } = useWindowFocus();
+    const [svgRefState, setSvgRefState] = useState();
+
+    const svgRef = useRef(null);
 
     useEffect(() => {
-        console.log(onFocus);
-        console.log(onBlur);
-    }, [onFocus, onBlur]);
+
+        if(svgRef && svgRef.current){
+            setSvgRefState(svgRef.current);
+        }
+
+    }, [svgRef]);
+
 
 	return (
 		<>
@@ -63,17 +66,20 @@ const Map3 = () => {
 				width="830"
 				height="499"
 				viewBox="0 0 830 499"
+                
 			>
 				<g
 					id="그룹_939"
 					data-name="그룹 939"
 					transform="translate(-963 -2425)"
+                    ref={svgRef}
 				>
 
-					<Background />
+					<Background svgRefState={svgRefState}/>
 
+				</g>
 					{/* First shape */}
-					<Rectangle color={"#1816c9"} init={init} rest={rest} />
+					{/* <Rectangle color={"#1816c9"} init={init} rest={rest} />
 					<FirstText color={"#1816c9"} init={init} rest={rest} />
 					<FirstLine init={init} rest={rest} />
 
@@ -86,8 +92,7 @@ const Map3 = () => {
 					<ThirdLine init={init} rest={rest} />
 
 					<QuadCricle color={"#1816c9"} init={init} rest={rest} />
-					<FourthText color={"#1816c9"} init={init} rest={rest} onHandleRest={handleRest}/>
-				</g>
+					<FourthText color={"#1816c9"} init={init} rest={rest} onHandleRest={handleRest}/> */}
 			</svg>
 		</>
 	);
