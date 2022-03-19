@@ -7,7 +7,7 @@ const pathArr = [
     "M1470,460 c-53,128 -336,-16 -387,138",
 ];
 
-const SecondLine = ({ init, rest }) => {
+const SecondLine = ({ init, rest, data }) => {
     
 
     const lineRef = useRef(null);
@@ -15,7 +15,7 @@ const SecondLine = ({ init, rest }) => {
 
 	useEffect(() => {
 		setLength(lineRef.current.getTotalLength());
-	}, [length]);
+	}, [length, data]);
 
 	const animatedStyle = useSpring({
 		from: { length },
@@ -25,30 +25,34 @@ const SecondLine = ({ init, rest }) => {
 		reset: init,
 	});
 
-    useEffect(() => {
-        if (init) {
-            lineRef.current.setAttribute("stroke-dashoffset", length);
-        }
-    } ,[init]);
+    // useEffect(() => {
+    //     if ( data && length) {
+    //         lineRef.current.setAttribute("stroke-dashoffset", length);
+    //     }
+    // } ,[data, length]);
 
-    useEffect(() => {
-        let timer;
-		if (rest && length && lineRef && lineRef.current) {
-            timer = setTimeout(() => {
-                lineRef.current.setAttribute("stroke-dashoffset", length);
-            }, 3000);
-		}
-        return () => clearTimeout(timer);
-	}, [rest, length, lineRef]);
+    // useEffect(() => {
+    //     let timer;
+	// 	if (rest && length && lineRef && lineRef.current) {
+    //         timer = setTimeout(() => {
+    //             lineRef.current.setAttribute("stroke-dashoffset", length);
+    //         }, 3000);
+	// 	}
+	// }, [rest, length, lineRef]);
 
 	return (
 		<>
+        
 			<animated.path
                 ref={lineRef}
-				id="패스_119"
-				data-name="패스 119"
-				d="M1469,2476.5s-3.467,28.966-143.7,29.1-146.8,42.4-146.8,42.4"
-				transform="translate(6 159)"
+				// id="패스_119"
+				// data-name="패스 119"
+				// d="M1469,2476.5s-3.467,28.966-143.7,29.1-146.8,42.4-146.8,42.4"
+				// transform="translate(6 159)"
+                id={data.id}
+				data-name={data.id}
+				d={data.d}
+				transform={data.transform}
 				fill="transparent"
 				stroke="#1210c7"
 				strokeDashoffset={animatedStyle.length}

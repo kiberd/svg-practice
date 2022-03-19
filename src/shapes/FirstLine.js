@@ -7,15 +7,13 @@ const pathArr = [
 	"M1280,150 c45,140 140,5 190,180",
 ];
 
-const FirstLine = ({ init, rest }) => {
-
-    
+const FirstLine = ({ init, rest, data }) => {
 	const lineRef = useRef(null);
 	const [length, setLength] = useState(null);
 
 	useEffect(() => {
 		setLength(lineRef.current.getTotalLength());
-	}, [length]);
+	}, [data]);
 
 	const animatedStyle = useSpring({
 		from: { length },
@@ -25,35 +23,40 @@ const FirstLine = ({ init, rest }) => {
 		reset: init,
 	});
 
-    useEffect(() => {
-        if (init) {
-            lineRef.current.setAttribute("stroke-dashoffset", length);
-        }
-    } ,[init]);
+	// useEffect(() => {
+	// 	if (length) {
+	// 		lineRef.current.setAttribute("stroke-dashoffset", length);
+	// 	}
+	// }, [length]);
 
-	useEffect(() => {
-		if (rest && length && lineRef && lineRef.current) {
-            setTimeout(() => {
-                lineRef.current.setAttribute("stroke-dashoffset", length);
-            } ,3000);
-			
-		}
-	}, [rest, length, lineRef]);
+	// useEffect(() => {
+	// 	if (rest && length && lineRef && lineRef.current) {
+	// 		setTimeout(() => {
+	// 			lineRef.current.setAttribute("stroke-dashoffset", length);
+	// 		}, 3000);
+	// 	}
+	// }, [rest, length, lineRef]);
 
 	return (
 		<>
-			<animated.path
-				ref={lineRef}
-				id="패스_58"
-				data-name="패스 58"
-				d="M1178.5,2476.5s3.515,33.829,145.676,33.991S1473,2560,1473,2560"
-				transform="translate(2 4.501)"
-				fill="transparent"
-				stroke="#1210c7"
-				strokeDashoffset={animatedStyle.length}
-				strokeDasharray={length}
-				strokeWidth={3}
-			/>
+			{data ? (
+				<animated.path
+					ref={lineRef}
+					// id="패스_58"
+					// data-name="패스 58"
+					// d="M1178.5,2476.5s3.515,33.829,145.676,33.991S1473,2560,1473,2560"
+					// transform="translate(2 4.501)"
+					id={data.id}
+					data-name={data.id}
+					d={data.d}
+					transform={data.transform}
+					fill="transparent"
+					stroke="#1210c7"
+					strokeDashoffset={animatedStyle.length}
+					strokeDasharray={length}
+					strokeWidth={3}
+				/>
+			) : null}
 		</>
 	);
 };

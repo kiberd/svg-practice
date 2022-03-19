@@ -109,7 +109,7 @@ const Background = ({ rest, svgRefState, onHandleCoordinate }) => {
             // Set firstLine (random number)
             const firstLineElement = firstLines[rand(0, firstLines.length - 1)];
 
-            // console.log(firstLineElement);
+            console.log(firstLineElement);
 
             const firstLineObj = {};
             firstLineObj.id = firstLineElement.getAttribute("id");
@@ -281,14 +281,14 @@ const Background = ({ rest, svgRefState, onHandleCoordinate }) => {
 
             });
 
-            secondLineElement = secondLineCandidate[rand(0, 8)];
+            // console.log(secondLineCandidate);
+
+            secondLineElement = secondLineCandidate[rand(0, secondLineCandidate.length - 1)];
 
             const secondLineObj = {};
             secondLineObj.id = secondLineElement.getAttribute("id");
             secondLineObj.transform = secondLineElement.getAttribute("transform");
             secondLineObj.d = secondLineElement.getAttribute("d");
-
-            // console.log(secondLineElement);
 
             coordinateData.secondLine = secondLineObj;
 
@@ -395,7 +395,7 @@ const Background = ({ rest, svgRefState, onHandleCoordinate }) => {
 
             });
 
-            thirdLineElement = thirdLineCandidate[rand(0, 8)];
+            thirdLineElement = thirdLineCandidate[rand(0, thirdLineCandidate.length - 1)];
 
             const thirdLineObj = {};
             thirdLineObj.id = thirdLineElement.getAttribute("id");
@@ -423,7 +423,7 @@ const Background = ({ rest, svgRefState, onHandleCoordinate }) => {
             let thirdLineCurveDirection;
             const thirdPathId = thirdLineElement.getAttribute("id").split("_")[1];
             // 86, 140, 249 -> 이상한 값
-            if(secondPathId === "249"){
+            if(thirdPathId === "249"){
                 thirdLineCurveDirection = 0;
             } else {
                 thirdLineCurveDirection = Number(thirdLineElement.getAttribute("d").split('s')[1].split(',')[0]);
@@ -2499,7 +2499,34 @@ const Background = ({ rest, svgRefState, onHandleCoordinate }) => {
 				stroke="#b8b8c6"
 				stroke-width="0.6"
 			/>
+			{/* <path
+				id="패스_94"
+				data-name="패스 94"
+				d="M1178.5,2476.5s.006,33.829.247,33.991S1179,2560,1179,2560"
+				transform="translate(392.5 4.501)"
+				fill="none"
+				stroke="#b8b8c6"
+				stroke-width="0.6"
+			/>
 			<path
+				id="패스_144"
+				data-name="패스 144"
+				d="M1178.5,2476.5s.006,28.966.247,29.1.253,42.4.253,42.4"
+				transform="translate(392.5 159)"
+				fill="none"
+				stroke="#b8b8c6"
+				stroke-width="0.6"
+			/>
+			<path
+				id="패스_255"
+				data-name="패스 255"
+				d="M1178.5,2476.5s.006,32.666.247,32.822.253,47.812.253,47.812"
+				transform="translate(392.5 302)"
+				fill="none"
+				stroke="#b8b8c6"
+				stroke-width="0.6"
+			/> */}
+            <path
 				id="패스_94"
 				data-name="패스 94"
 				d="M1178.5,2476.5s.006,33.829.247,33.991S1179,2560,1179,2560"
@@ -3030,7 +3057,25 @@ const Background = ({ rest, svgRefState, onHandleCoordinate }) => {
 				stroke="#b8b8c6"
 				stroke-width="0.6"
 			/>
+			{/* <path
+				id="패스_165"
+				data-name="패스 165"
+				d="M1178.5,2476.5s.006,28.966.247,29.1.253,42.4.253,42.4"
+				transform="translate(586.5 159)"
+				fill="none"
+				stroke="#b8b8c6"
+				stroke-width="0.6"
+			/>
 			<path
+				id="패스_261"
+				data-name="패스 261"
+				d="M1178.5,2476.5s.006,32.666.247,32.822.253,47.812.253,47.812"
+				transform="translate(586.5 302)"
+				fill="none"
+				stroke="#b8b8c6"
+				stroke-width="0.6"
+			/> */}
+            			<path
 				id="패스_165"
 				data-name="패스 165"
 				d="M1178.5,2476.5s.006,28.966.247,29.1.253,42.4.253,42.4"

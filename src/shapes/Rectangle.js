@@ -9,7 +9,7 @@ const rectArry = [
 	"M1301.84,97.91h-49.68V48.48c4-.69,36-.91,49.68-.3Z",
 ];
 
-const Rectangle = ({ color, init, rest }) => {
+const Rectangle = ({ color, init, rest, data }) => {
 	const shapeRef = useRef(null);
 
 	const animationFillStyle = useSpring({
@@ -19,24 +19,33 @@ const Rectangle = ({ color, init, rest }) => {
 		reset: init,
 	});
 
-	useEffect(() => {
-		if (rest && shapeRef && shapeRef.current) {
-            setTimeout(() => { 
-                shapeRef.current.setAttribute("fill", "#b8b8c6");
-            }, 3000);
-		}
-	}, [rest, shapeRef]);
+	// useEffect(() => {
+	// 	if (rest && shapeRef && shapeRef.current) {
+    //         setTimeout(() => { 
+    //             shapeRef.current.setAttribute("fill", "#b8b8c6");
+    //         }, 3000);
+	// 	}
+	// }, [rest, shapeRef]);
+
+    // useEffect(() => {
+    //     if ( (init || data) && shapeRef && shapeRef.current) {
+    //         shapeRef.current.setAttribute("fill", "#b8b8c6");
+	// 	}
+    // } ,[init, data, shapeRef]);
 
 	return (
 		<>
 			<animated.rect
 				ref={shapeRef}
 				fill={animationFillStyle.fillColor}
-				id="사각형_59"
-				data-name="사각형 59"
+				// id="사각형_59"
+				// data-name="사각형 59"
+                id={data.id}
+                data-name={data.id}
 				width="25"
 				height="25"
-				transform="translate(1168 2425)"
+				// transform="translate(1168 2425)"
+                transform={data.transform}
 			/>
 		</>
 	);

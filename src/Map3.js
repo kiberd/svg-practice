@@ -17,54 +17,120 @@ import ThirdLine from "./shapes/ThirdLine";
 import QuadCricle from "./shapes/QuadCricle";
 import FourthText from "./shapes/FourthText";
 
-import { useEventListener } from "./CustomHooks";
+const shapes = {
+    rectangle: {
+        id: "사각형_59",
+        transform: "translate(1168 2425)",
+    },
+
+    circle: {
+        id: "사각형_108",
+        transform: "translate(1462 2563.501)",
+    },
+
+    tripleRectangle: {
+        id: "패스_540-2",
+        transform: "translate(1170 2702.626)",
+        d: "M28.05,8.72c0,1-.01,1.993,0,2.99a1.387,1.387,0,0,1-.692,1.283c-1.82,1.177-3.624,2.377-5.442,3.557a.538.538,0,0,0-.288.521c.013,1.774,0,3.548.012,5.323A1.329,1.329,0,0,1,21,23.6q-3.142,2.066-6.28,4.138a1.3,1.3,0,0,1-1.586-.023q-3-2.049-6-4.079a1.439,1.439,0,0,1-.689-1.32c.021-1.719,0-3.439.013-5.158a.524.524,0,0,0-.266-.5c-1.82-1.217-3.626-2.454-5.45-3.664A1.5,1.5,0,0,1,0,11.6c.024-1.993.016-3.987,0-5.98A1.326,1.326,0,0,1,.651,4.418Q3.795,2.355,6.93.278A1.251,1.251,0,0,1,8.476.293c1.732,1.19,3.476,2.362,5.2,3.559a.512.512,0,0,0,.684-.005C16.128,2.667,17.9,1.5,19.675.333a1.242,1.242,0,0,1,1.709.015c1.975,1.34,3.944,2.688,5.925,4.019a1.525,1.525,0,0,1,.746,1.4c-.02.985-.005,1.972-.005,2.957M7.668,2.609,3.279,5.494c.1.075.171.128.242.176,1.242.838,2.488,1.671,3.724,2.519a.39.39,0,0,0,.519,0c1.281-.858,2.572-1.7,3.859-2.552.079-.052.152-.112.25-.185l-4.2-2.848M24.757,5.465c-1.36-.915-2.679-1.8-3.986-2.692a.391.391,0,0,0-.52.01c-1.274.85-2.555,1.689-3.833,2.532-.085.056-.164.121-.264.2l4.2,2.845,4.4-2.891M13.914,19.038l4.365-2.859-4.234-2.872L9.7,16.179l4.218,2.858m5.357-.691c-.092.047-.131.063-.166.086-1.244.816-2.49,1.628-3.726,2.456a.514.514,0,0,0-.175.372c-.014,1.018-.008,2.036-.007,3.054,0,.091.012.182.021.313,1.334-.877,2.632-1.727,3.924-2.585a.329.329,0,0,0,.124-.235c.008-1.136.005-2.273.005-3.461m-10.517.008c0,1.164.007,2.248-.006,3.331a.467.467,0,0,0,.245.446c1.19.8,2.371,1.61,3.556,2.416.077.052.161.1.279.165,0-1.18.005-2.316-.01-3.452,0-.1-.125-.218-.221-.284-1.063-.733-2.131-1.457-3.2-2.183l-.645-.44m12.872-4.467c.084-.042.134-.061.177-.089,1.23-.8,2.463-1.592,3.685-2.4a.512.512,0,0,0,.184-.369c.015-1.018.009-2.037.007-3.055a2.549,2.549,0,0,0-.033-.276c-.125.075-.218.128-.307.186-1.153.756-2.3,1.518-3.461,2.266a.516.516,0,0,0-.276.5c.014.963.005,1.927.006,2.891,0,.1.01.209.017.349M12.859,7.694a1.636,1.636,0,0,0-.169.079c-1.244.815-2.49,1.627-3.724,2.455a.52.52,0,0,0-.17.377c-.014,1-.008,1.991-.006,2.986,0,.089.018.179.033.314,1.331-.875,2.619-1.72,3.9-2.572a.336.336,0,0,0,.13-.237c.008-1.115.006-2.229.006-3.4m-10.48.021a1.667,1.667,0,0,0-.032.206c0,1.04-.008,2.081.008,3.121a.525.525,0,0,0,.216.355c1.188.823,2.384,1.632,3.579,2.444.068.046.144.081.226.127a.512.512,0,0,0,.036-.115c0-1.084.007-2.168,0-3.252a.334.334,0,0,0-.127-.237C5,9.487,3.714,8.619,2.379,7.716M19.271,13.96c0-1.124-.006-2.174.005-3.223a.468.468,0,0,0-.236-.451c-1.2-.8-2.393-1.615-3.588-2.423-.069-.046-.141-.087-.256-.157,0,1.107.007,2.164-.006,3.221a.468.468,0,0,0,.249.446c.974.648,1.94,1.308,2.909,1.964l.923.624",
+    },
+
+    quadCircle: {
+        id: "패스_541-6",
+        transform: "translate(1463.28 2858.168)",
+        d: "M23.477,16.2q0-1.1,0-2.194c0-.72,0-1.439-.007-2.159-.009-1.662-.018-3.381.022-5.068a4.757,4.757,0,0,0-2-4.078A11.834,11.834,0,0,0,17,.642,21.536,21.536,0,0,0,11.789,0,22.609,22.609,0,0,0,7.836.355,13.525,13.525,0,0,0,2.425,2.4,5.014,5.014,0,0,0,0,6.826c.051,4.407.034,8.891.017,13.226L.012,21.43a4.587,4.587,0,0,0,1.807,3.7,11.485,11.485,0,0,0,4.714,2.23A21.127,21.127,0,0,0,11.7,28a22.3,22.3,0,0,0,3.964-.362,12.467,12.467,0,0,0,6.058-2.546,4.456,4.456,0,0,0,1.763-3.618c-.013-1.759-.011-3.548-.008-5.278m-3.606,7.68a10.627,10.627,0,0,1-3.819,1.535,19.516,19.516,0,0,1-4.25.469c-.461,0-.93-.016-1.394-.049a16.258,16.258,0,0,1-5.577-1.282,5.636,5.636,0,0,1-2.267-1.66,1.908,1.908,0,0,1-.436-1.173c-.005-.5,0-1.01,0-1.523a12.926,12.926,0,0,0,5.64,2.256,21.312,21.312,0,0,0,3.9.365q.4,0,.81-.016a17.7,17.7,0,0,0,7.168-1.568,15.127,15.127,0,0,0,1.628-.959l.1-.064c.011.547.022,1.112-.021,1.664a2.748,2.748,0,0,1-1.475,2M20.927,5.1a1.7,1.7,0,0,1,.019,2.239,6.422,6.422,0,0,1-2.985,1.976,18.051,18.051,0,0,1-6.375,1.055,16.846,16.846,0,0,1-6.8-1.373,6.189,6.189,0,0,1-1.929-1.3,1.849,1.849,0,0,1,.012-2.936A7.853,7.853,0,0,1,6.222,2.909a18.064,18.064,0,0,1,5.452-.788c.427,0,.869.012,1.313.037A16.328,16.328,0,0,1,18.02,3.17,6.441,6.441,0,0,1,20.927,5.1M11.8,20.716a19.758,19.758,0,0,1-1.979-.1,13.978,13.978,0,0,1-5.64-1.574,4.459,4.459,0,0,1-1.634-1.379,2.165,2.165,0,0,1-.381-.931c-.044-.554-.037-1.113-.028-1.7a14.313,14.313,0,0,0,6.505,2.384,21.175,21.175,0,0,0,3.071.223c.7,0,1.416-.034,2.128-.1a15.084,15.084,0,0,0,6.987-2.137c.172-.11.338-.227.5-.345v.042a15.54,15.54,0,0,1-.033,1.888,2.22,2.22,0,0,1-.964,1.36,9.761,9.761,0,0,1-3.981,1.821,18.905,18.905,0,0,1-4.55.555m9.563-9.292a2.329,2.329,0,0,1-1.048,1.756,10.325,10.325,0,0,1-4.189,1.859,18.686,18.686,0,0,1-4.319.5,20.545,20.545,0,0,1-2.148-.115,13.816,13.816,0,0,1-5.469-1.566A4.436,4.436,0,0,1,2.55,12.491a2.268,2.268,0,0,1-.387-.968c-.045-.546-.037-1.094-.028-1.673.159.118.323.234.49.343A14.243,14.243,0,0,0,7.989,12.14a21.265,21.265,0,0,0,3.707.324,22.518,22.518,0,0,0,2.316-.121,14.772,14.772,0,0,0,7.361-2.49c0,.543.007,1.058-.009,1.571",
+    }
+};
+
+const texts = {
+    firstText: {
+        id: "상장기업",
+        transform: "translate(1156 2471)",
+    },
+    secondText: {
+        id: "가치_적정성",
+        transform: "translate(1474 2609)",
+    },
+    thirdText: {
+        id: "AI_모형_03",
+        transform: "translate(1184 2749)",
+    },
+    fourthText: {
+        id: "Data_Set_06",
+        transform: "translate(1475 2904)",
+    }
+};
+
+const lines = {
+
+    firstLine: {
+        id: "패스_58",
+        transform: "translate(2 4.501)",
+        d: "M1178.5,2476.5s3.515,33.829,145.676,33.991S1473,2560,1473,2560",
+    },
+    // firstLine: {
+    //     id: "패스_66",
+    //     transform: "translate(102 4.501)",
+    //     d: "M1178.5,2476.5s5.788,33.829,239.908,33.991S1663.5,2560,1663.5,2560",
+    // },
+    secondLine: {
+        id: "패스_119",
+        transform: "translate(6 159)",
+        d: "M1469,2476.5s-3.467,28.966-143.7,29.1-146.8,42.4-146.8,42.4",
+    },
+    thirdLine: {
+        id: "패스_214",
+        transform: "translate(2 302)",
+        d: "M1178.5,2476.5s3.515,32.666,145.676,32.822S1473,2557.133,1473,2557.133",
+    }
+
+};
+
 
 const Map3 = () => {
+
+    const svgRef = useRef(null);
 
 	const [init, setInit] = useState(false);
 	const [rest, setRest] = useState(false);
 
-    const [coordinateData, setCoordinateData] = useState();
-
-    useEffect(() => {
-        let timer;
-        if (rest && !init) {
-            timer = setTimeout(animationStart, 5000);
-        }
-        return () => clearTimeout(timer);
-    } ,[rest, init]);
-    
-    const handleRest = () => {
-        animationStop();
-    };
-
-    const animationStart = () => {
-        setRest(false);
-        setInit(true);
-    };
-
-    const animationStop = () => {
-        setRest(true);
-        setInit(false);
-    };
-
+    const [visable, setVisable] = useState(true);
     const [svgRefState, setSvgRefState] = useState();
 
-    const svgRef = useRef(null);
+	const [coordinateData, setCoordinateData] = useState({...shapes, ...lines, ...texts});
 
-    useEffect(() => {
+	useEffect(() => {
+		let timer;
+		if (rest && !init) {
+			timer = setTimeout(animationStart, 3000);
+		}
+	}, [rest, init]);
 
-        if(svgRef && svgRef.current){
-            setSvgRefState(svgRef.current);
-        }
+	const handleRest = () => {
+        setTimeout(animationStop, 3000);
+	};
 
-    }, [svgRef]);
+	const animationStart = () => {
+        setVisable(true);
+		setRest(false);
+		setInit(true);
+	};
 
-    const handleCoordinate = (coordinateData) => {
-        console.log(coordinateData);
-        setCoordinateData(coordinateData);
-    };
+	const animationStop = () => {
+        setVisable(false);
+		setRest(true);
+		setInit(false);
+	};
 
+
+	useEffect(() => {
+		if (svgRef && svgRef.current) {
+			setSvgRefState(svgRef.current);
+		}
+	}, [svgRef]);
+
+	const handleCoordinate = (data) => {
+		setCoordinateData(data);
+	};
 
 	return (
 		<>
@@ -72,36 +138,74 @@ const Map3 = () => {
 				xmlns="http://www.w3.org/2000/svg"
 				width="830"
 				height="499"
-                // width="1600"
+				// width="1600"
 				// height="900"
 				viewBox="0 0 830 499"
-                // viewBox="0 0 1600 900"
-                
+				// viewBox="0 0 1600 900"
 			>
 				<g
 					id="그룹_939"
 					data-name="그룹 939"
 					transform="translate(-963 -2425)"
-                    ref={svgRef}
+					ref={svgRef}
 				>
+					<Background
+						rest={rest}
+						svgRefState={svgRefState}
+						onHandleCoordinate={handleCoordinate}
+					/>
 
-					<Background rest={rest} svgRefState={svgRefState} onHandleCoordinate={handleCoordinate}/>
-
-					{/* First shape */}
-					<Rectangle color={"#1816c9"} init={init} rest={rest} />
-					<FirstText color={"#1816c9"} init={init} rest={rest} />
-					<FirstLine init={init} rest={rest} />
-
-					<Circle color={"#1816c9"} init={init} rest={rest} />
-					<SecondText color={"#1816c9"} init={init} rest={rest} />
-					<SecondLine init={init} rest={rest} />
-
-					<TripleRectangle color={"#1816c9"} init={init} rest={rest} />
-					<ThirdText color={"#1816c9"} init={init} rest={rest} />
-					<ThirdLine init={init} rest={rest} />
-
-					<QuadCricle color={"#1816c9"} init={init} rest={rest} />
-					<FourthText color={"#1816c9"} init={init} rest={rest} onHandleRest={handleRest}/>
+					{coordinateData && visable && !rest ? (
+						<>
+							<Rectangle
+								color={"#1816c9"}
+								init={init}
+								rest={rest}
+								data={coordinateData.rectangle}
+							/>
+							<FirstText
+								color={"#1816c9"}
+								init={init}
+								rest={rest}
+                                data={coordinateData.firstText}
+							/>
+							<FirstLine init={init} rest={rest} data={coordinateData.firstLine}/>
+							<Circle color={"#1816c9"} init={init} rest={rest} data={coordinateData.circle} />
+							<SecondText
+								color={"#1816c9"}
+								init={init}
+								rest={rest}
+                                data={coordinateData.secondText}
+							/>
+							<SecondLine init={init} rest={rest} data={coordinateData.secondLine} />
+							<TripleRectangle
+								color={"#1816c9"}
+								init={init}
+								rest={rest}
+                                data={coordinateData.tripleRectangle}
+							/>
+							<ThirdText
+								color={"#1816c9"}
+								init={init}
+								rest={rest}
+                                data={coordinateData.thirdText}
+							/>
+							<ThirdLine init={init} rest={rest} data={coordinateData.thirdLine} />
+							<QuadCricle
+								color={"#1816c9"}
+								init={init}
+								rest={rest}
+                                data={coordinateData.quadCircle}
+							/>
+							<FourthText
+								color={"#1816c9"}
+								init={init}
+								rest={rest}
+                                data={coordinateData.fourthText}
+								onHandleRest={handleRest}
+							/>
+						</>
+					) : null}
 				</g>
 			</svg>
 		</>

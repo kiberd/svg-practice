@@ -7,7 +7,7 @@ const circleArry = [
 	"M1472,314c0,2.83,0,5.66,0,8.48a2.52,2.52,0,0,0,1.88,2.5,9.65,9.65,0,0,0,2.24.61c4.29.68,7.77,3.13,11.19,5.47,4.06,2.77,6.18,7.13,7.66,11.65,2.48,7.56.84,14.58-3.33,21.21a21.84,21.84,0,0,1-9.42,8.41c-4.73,2.24-9.84,3.73-14.81,2.49-5.93-1.46-12.32-3-15.45-9.38-3.74-2.57-4.4-6.87-5.49-10.68a22.63,22.63,0,0,1-.28-9.28c.36-2.51,1.71-4.92,2.87-7.25a19.07,19.07,0,0,1,3.4-5.05,33.43,33.43,0,0,1,5.73-4.16,28.79,28.79,0,0,1,11.81-4.37c.26-3-2.1-5.07-3-7.65.9-1.09,3.16-.52,3.26-2.68A7.66,7.66,0,0,1,1472,314Z",
 ];
 
-const Circle = ({ color, init, rest }) => {
+const Circle = ({ color, init, rest, data }) => {
 	const shapeRef = useRef(null);
 
 	const animationFillStyle = useSpring({
@@ -18,25 +18,34 @@ const Circle = ({ color, init, rest }) => {
 		reset: init,
 	});
 
-	useEffect(() => {
-		if (rest && shapeRef && shapeRef.current) {
-            setTimeout(() => {
-                shapeRef.current.setAttribute("fill", "#b8b8c6");
-            }, 3000);
-		}
-	}, [rest, shapeRef]);
+	// useEffect(() => {
+	// 	if (rest && shapeRef && shapeRef.current) {
+    //         setTimeout(() => {
+    //             shapeRef.current.setAttribute("fill", "#b8b8c6");
+    //         }, 3000);
+	// 	}
+	// }, [rest, shapeRef]);
+
+    // useEffect(() => {
+    //     if ( (init || data) && shapeRef && shapeRef.current) {
+    //         shapeRef.current.setAttribute("fill", "#b8b8c6");
+	// 	}
+    // } ,[init, data, shapeRef]);
 
 	return (
 		<>
 			<animated.rect
 				ref={shapeRef}
 				fill={animationFillStyle.fillColor}
-				id="사각형_108"
-				data-name="사각형 108"
+				// id="사각형_108"
+				// data-name="사각형 108"
+                id={data.id}
+				data-name={data.id}
 				width="25"
 				height="25"
 				rx="12.5"
-				transform="translate(1462 2563.501)"
+				// transform="translate(1462 2563.501)"
+                transform={data.transform}
 			/>
 		</>
 	);
