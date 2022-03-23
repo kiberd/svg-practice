@@ -99,6 +99,8 @@ const Map3 = () => {
 	const [coordinateData, setCoordinateData] = useState({...shapes, ...lines, ...texts});
 
 	useEffect(() => {
+        console.log("rest : ", rest);
+        console.log("init : ", init);
 		let timer;
 		if (rest && !init) {
 			timer = setTimeout(animationStart, 3000);
