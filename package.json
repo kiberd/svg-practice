@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@kelvinkhai/react-text-loop": "^2.4.0",
     "@mui/material": "^5.5.0",
     "@storybook/addon-controls": "^6.4.19",
     "@testing-library/jest-dom": "^5.16.2",

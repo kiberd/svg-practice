@@ -1,7 +1,52 @@
-import React from "react";
-import HoneyComb from "./shapes2/HoneyComb.js";
+import React, { useEffect, useRef, useState } from "react";
+
+import ObjectTextBackground from "./shapes2/ObjectText/ObjectTextBackground.js";
+import ObjectText from "./shapes2/ObjectText/ObjectText.js";
+
+import HoneyCombBackground from "./shapes2/HoneyComb/HoneyCombBackground.js";
+import HoneyComb from "./shapes2/HoneyComb/HoneyComb.js";
+
+import FirstLineBackground from "./shapes2/FirstLines/FirstLineBackground.js";
+import FirstLine from "./shapes2/FirstLines/FirstLine.js";
+
+
+import FirstLineArrowBackground from "./shapes2/FirstLines/FirstLineArrowBackground.js";
+import FirstLineArrow from "./shapes2/FirstLines/FirstLineArrow.js";
+
+import MethodTextBackground from "./shapes2/MethodText/MethodTextBackground.js";
+import MethodText from "./shapes2/MethodText/MethodText.js";
+
+import FirstGroupBackground from "./shapes2/SecondLines/FirstGroup/FirstGroupBackground.js";
+import FirstGroup from "./shapes2/SecondLines/FirstGroup/FirstGroup.js";
+
+import SecondGroupBackground from "./shapes2/SecondLines/SecondGroup/SecondGroupBackground.js";
+import SecondGroup from "./shapes2/SecondLines/SecondGroup/SecondGroup.js";
+
+import ThirdGroupBackground from "./shapes2/SecondLines/ThirdGroup/ThirdGroupBackground.js";
+import ThirdGroup from "./shapes2/SecondLines/ThirdGroup/ThirdGroup.js";
+
+import FirstLibraryGroupBackground from "./shapes2/LibraryText/FirstGroup/FirstLibraryGroupBackground.js";
+import FirstLibrary from "./shapes2/LibraryText/FirstGroup/FirstLibrary.js";
+
+import SecondLibraryGroupBackground from "./shapes2/LibraryText/SecondGroup/SecondLibraryGroupBackground.js";
+
+import ThridLibraryGroupBackground from "./shapes2/LibraryText/ThirdGroup/ThridLibraryGroupBackground.js";
+
+import Rectangles from "./shapes2/Explanatory/Rectangles.js";
+
+
+
 
 const Map4 = () => {
+
+    const [honeyCombInfo, setHoneyCombInfo] = useState();
+
+    const handleHoneyCombInfo = (data) => {
+
+        // console.log(data);
+        setHoneyCombInfo(data);
+    };
+	
 	return (
 		<>
 			<svg
@@ -93,1324 +138,50 @@ const Map4 = () => {
 							Champion M3
 						</tspan>
 					</text>
-					<text
-						id="Objective_01"
-						data-name="Objective 01"
-						transform="translate(828.5 3583.098)"
-						fill="#e9e8e8"
-						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
-						font-weight="700"
-					>
-						<tspan x="0" y="0">
-							Objective 01
-						</tspan>
-					</text>
-					<text
-						id="Objective_02"
-						data-name="Objective 02"
-						transform="translate(828.5 3760.098)"
-						fill="#e9e8e8"
-						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
-						font-weight="700"
-					>
-						<tspan x="0" y="0">
-							Objective 02
-						</tspan>
-					</text>
-					<text
-						id="Objective_03"
-						data-name="Objective 03"
-						transform="translate(828.5 3947.098)"
-						fill="#e9e8e8"
-						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
-						font-weight="700"
-					>
-						<tspan x="0" y="0">
-							Objective 03
-						</tspan>
-					</text>
-					<g
-						id="그룹_923"
-						data-name="그룹 923"
-						transform="translate(-15 -66.902)"
-					>
-						<text
-							id="Naïve_Bayes"
-							data-name="Naïve Bayes"
-							transform="translate(1434 3552)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								Naïve Bayes
-							</tspan>
-						</text>
-						<text
-							id="Decision_Tree"
-							data-name="Decision Tree"
-							transform="translate(1434 3595)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								Decision Tree
-							</tspan>
-						</text>
-						<text
-							id="Random_Forest"
-							data-name="Random Forest"
-							transform="translate(1434 3638)"
-							fill="#e9e8e8"
-							font-size="14"
-							font-family="Pretendard-Bold, Pretendard"
-							font-weight="700"
-						>
-							<tspan x="0" y="0">
-								Random Forest
-							</tspan>
-						</text>
-						<text
-							id="K_Nearest_Neighbors"
-							data-name="K Nearest Neighbors"
-							transform="translate(1434 3681)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								K Nearest Neighbors
-							</tspan>
-						</text>
-					</g>
-					<g
-						id="그룹_886"
-						data-name="그룹 886"
-						transform="translate(-44 -40.902)"
-					>
-						<text
-							id="Linear_Regression"
-							data-name="Linear Regression"
-							transform="translate(1463 3741)"
-							fill="#e9e8e8"
-							font-size="14"
-							font-family="Pretendard-Bold, Pretendard"
-							font-weight="700"
-						>
-							<tspan x="0" y="0">
-								Linear Regression
-							</tspan>
-						</text>
-						<text
-							id="Logistic_Regression"
-							data-name="Logistic Regression"
-							transform="translate(1463 3784)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								Logistic Regression
-							</tspan>
-						</text>
-						<text
-							id="Lasso_Regression"
-							data-name="Lasso Regression"
-							transform="translate(1463 3827)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								Lasso Regression
-							</tspan>
-						</text>
-						<text
-							id="Multiple_Regression"
-							data-name="Multiple Regression"
-							transform="translate(1463 3870)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								Multiple Regression
-							</tspan>
-						</text>
-					</g>
-					<g
-						id="그룹_885"
-						data-name="그룹 885"
-						transform="translate(-44 -14.902)"
-					>
-						<text
-							id="K-Means"
-							transform="translate(1463 3930)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								K-Means
-							</tspan>
-						</text>
-						<text
-							id="Hierarchical_Clustering"
-							data-name="Hierarchical Clustering"
-							transform="translate(1463 3973)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								Hierarchical Clustering
-							</tspan>
-						</text>
-						<text
-							id="FCM_Algorithm"
-							data-name="FCM Algorithm"
-							transform="translate(1463 4016)"
-							fill="#5a5a77"
-							font-size="14"
-							font-family="Pretendard-Regular, Pretendard"
-						>
-							<tspan x="0" y="0">
-								FCM Algorithm
-							</tspan>
-						</text>
-						<text
-							id="EM_Algorithm"
-							data-name="EM Algorithm"
-							transform="translate(1463 4059)"
-							fill="#e9e8e8"
-							font-size="14"
-							font-family="Pretendard-Bold, Pretendard"
-							font-weight="700"
-						>
-							<tspan x="0" y="0">
-								EM Algorithm
-							</tspan>
-						</text>
-					</g>
-					<text
-						id="AI_Supervision_Method"
-						data-name="AI Supervision Method"
-						transform="translate(1159 3388.5)"
-						fill="#5a5a77"
-						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
-						font-weight="700"
-					>
-						<tspan x="0" y="0">
-							AI Supervision Method
-						</tspan>
-					</text>
-					<text
-						id="P4P"
-						transform="translate(1159 3485.098)"
-						fill="#5a5a77"
-						font-size="14"
-						font-family="Pretendard-Regular, Pretendard"
-					>
-						<tspan x="0" y="0">
-							P4P
-						</tspan>
-					</text>
-					<text
-						id="Reference_Model"
-						data-name="Reference Model"
-						transform="translate(1159 3733.098)"
-						fill="#e9e8e8"
-						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
-						font-weight="700"
-					>
-						<tspan x="0" y="0">
-							Reference Model
-						</tspan>
-					</text>
-					<text
-						id="Doppelganger"
-						transform="translate(1159 3547.098)"
-						fill="#5a5a77"
-						font-size="14"
-						font-family="Pretendard-Regular, Pretendard"
-					>
-						<tspan x="0" y="0">
-							Doppelganger
-						</tspan>
-					</text>
-					<text
-						id="Victory_Road"
-						data-name="Victory Road"
-						transform="translate(1159 3796.098)"
-						fill="#e9e8e8"
-						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
-						font-weight="700"
-					>
-						<tspan x="0" y="0">
-							Victory Road
-						</tspan>
-					</text>
-					<text
-						id="Judgement_Day"
-						data-name="Judgement Day"
-						transform="translate(1159 3609.098)"
-						fill="#5a5a77"
-						font-size="14"
-						font-family="Pretendard-Regular, Pretendard"
-					>
-						<tspan x="0" y="0">
-							Judgement Day
-						</tspan>
-					</text>
-					<text
-						id="Tech_Scanner"
-						data-name="Tech Scanner"
-						transform="translate(1159 3858.098)"
-						fill="#e9e8e8"
-						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
-						font-weight="700"
-					>
-						<tspan x="0" y="0">
-							Tech Scanner
-						</tspan>
-					</text>
-					<text
-						id="PULSE"
-						transform="translate(1159 3982.098)"
-						fill="#5a5a77"
-						font-size="14"
-						font-family="Pretendard-Regular, Pretendard"
-					>
-						<tspan x="0" y="0">
-							PULSE
-						</tspan>
-					</text>
-					<text
-						id="Impact_Count-Up"
-						data-name="Impact Count-Up"
-						transform="translate(1159 3671.098)"
-						fill="#5a5a77"
-						font-size="14"
-						font-family="Pretendard-Regular, Pretendard"
-					>
-						<tspan x="0" y="0">
-							Impact Count-Up
-						</tspan>
-					</text>
-					<text
-						id="ESG_Breakdown"
-						data-name="ESG Breakdown"
-						transform="translate(1159 3920.098)"
-						fill="#5a5a77"
-						font-size="14"
-						font-family="Pretendard-Regular, Pretendard"
-					>
-						<tspan x="0" y="0">
-							ESG Breakdown
-						</tspan>
-					</text>
-					<text
-						id="Scanner_Tech"
-						data-name="Scanner Tech"
-						transform="translate(1159 4044.098)"
-						fill="#5a5a77"
-						font-size="14"
-						font-family="Pretendard-Regular, Pretendard"
-					>
-						<tspan x="0" y="0">
-							Scanner Tech
-						</tspan>
-					</text>
+
+
+
+                    <ObjectTextBackground />
+                    <ObjectText />
 
 
 
 
-					<g
-						id="그룹_882"
-						data-name="그룹 882"
-						transform="translate(-33 -89.152)"
-					>
-						<g
-							id="그룹_881"
-							data-name="그룹 881"
-							transform="translate(966 3615)"
-						>
-                            {/* #e9e8e8 : fill color */}
-							<path
-								id="패스_10269"
-								data-name="패스 10269"
-								d="M4.429,66.161,0,73.832,4.429,81.5h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10270"
-								data-name="패스 10270"
-								d="M4.429,132.32,0,139.992l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10271"
-								data-name="패스 10271"
-								d="M4.429,198.481,0,206.152l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -150.395)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10272"
-								data-name="패스 10272"
-								d="M4.429,264.642,0,272.313l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10273"
-								data-name="패스 10273"
-								d="M4.429,330.8,0,338.474l4.429,7.671h8.858l4.429-7.671L13.286,330.8Z"
-								transform="translate(0 -250.659)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10274"
-								data-name="패스 10274"
-								d="M118.742,81.5l-4.429-7.671,4.429-7.671H127.6l4.429,7.671L127.6,81.5Z"
-								transform="translate(-86.619 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10275"
-								data-name="패스 10275"
-								d="M118.742,147.663l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10276"
-								data-name="패스 10276"
-								d="M118.742,213.824l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -150.396)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10277"
-								data-name="패스 10277"
-								d="M118.742,279.984l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10278"
-								data-name="패스 10278"
-								d="M118.742,346.145l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -250.66)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10279"
-								data-name="패스 10279"
-								d="M61.678,114.583l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10280"
-								data-name="패스 10280"
-								d="M61.678,180.744l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10281"
-								data-name="패스 10281"
-								d="M61.678,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L70.536,246.9Z"
-								transform="translate(-43.38 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10282"
-								data-name="패스 10282"
-								d="M61.678,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10283"
-								data-name="패스 10283"
-								d="M61.679,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-43.38 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10284"
-								data-name="패스 10284"
-								d="M233.055,81.5l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L241.913,81.5Z"
-								transform="translate(-173.237 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10285"
-								data-name="패스 10285"
-								d="M233.055,147.663l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10286"
-								data-name="패스 10286"
-								d="M233.055,213.824l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -150.396)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10287"
-								data-name="패스 10287"
-								d="M233.055,279.984l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10288"
-								data-name="패스 10288"
-								d="M233.055,346.145l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -250.66)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10289"
-								data-name="패스 10289"
-								d="M175.992,114.583l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10290"
-								data-name="패스 10290"
-								d="M175.992,180.744l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10291"
-								data-name="패스 10291"
-								d="M175.992,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L184.85,246.9Z"
-								transform="translate(-129.999 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10292"
-								data-name="패스 10292"
-								d="M175.992,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10293"
-								data-name="패스 10293"
-								d="M175.992,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-129.999 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10294"
-								data-name="패스 10294"
-								d="M290.3,114.583l-4.429-7.671L290.3,99.24h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10295"
-								data-name="패스 10295"
-								d="M290.3,180.744l-4.429-7.671L290.3,165.4h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10296"
-								data-name="패스 10296"
-								d="M290.3,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10297"
-								data-name="패스 10297"
-								d="M290.3,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10298"
-								data-name="패스 10298"
-								d="M290.3,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-216.617 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10299"
-								data-name="패스 10299"
-								d="M347.368,66.161l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10300"
-								data-name="패스 10300"
-								d="M4.429,0,0,7.671l4.429,7.671h8.858l4.429-7.671L13.286,0Z"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10301"
-								data-name="패스 10301"
-								d="M118.742,0l-4.429,7.671,4.429,7.671H127.6l4.429-7.671L127.6,0Z"
-								transform="translate(-86.619)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10302"
-								data-name="패스 10302"
-								d="M61.678,48.422l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10303"
-								data-name="패스 10303"
-								d="M233.055,0l-4.429,7.671,4.429,7.671h8.858l4.428-7.671L241.913,0Z"
-								transform="translate(-173.237)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10304"
-								data-name="패스 10304"
-								d="M175.992,48.422l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10305"
-								data-name="패스 10305"
-								d="M290.3,48.422l-4.429-7.671L290.3,33.08h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10306"
-								data-name="패스 10306"
-								d="M347.368,0l-4.429,7.671,4.429,7.671h8.858l4.429-7.671L356.226,0Z"
-								transform="translate(-259.856)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10307"
-								data-name="패스 10307"
-								d="M347.368,132.32l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10308"
-								data-name="패스 10308"
-								d="M347.368,198.481l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -150.395)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10309"
-								data-name="패스 10309"
-								d="M347.368,264.642l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10310"
-								data-name="패스 10310"
-								d="M347.368,330.8l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -250.659)"
-								fill="#e9e8e8"
-							/>
-						</g>
-					</g>
+                    <FirstLibraryGroupBackground />
+                    <FirstLibrary />
 
-
-
-					<g
-						id="그룹_883"
-						data-name="그룹 883"
-						transform="translate(-33 87.848)"
-					>
-						<g
-							id="그룹_881-2"
-							data-name="그룹 881"
-							transform="translate(966 3615)"
-						>
-							<path
-								id="패스_10269-2"
-								data-name="패스 10269"
-								d="M4.429,66.161,0,73.832,4.429,81.5h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10270-2"
-								data-name="패스 10270"
-								d="M4.429,132.32,0,139.992l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10271-2"
-								data-name="패스 10271"
-								d="M4.429,198.481,0,206.152l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -150.395)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10272-2"
-								data-name="패스 10272"
-								d="M4.429,264.642,0,272.313l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10273-2"
-								data-name="패스 10273"
-								d="M4.429,330.8,0,338.474l4.429,7.671h8.858l4.429-7.671L13.286,330.8Z"
-								transform="translate(0 -250.659)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10274-2"
-								data-name="패스 10274"
-								d="M118.742,81.5l-4.429-7.671,4.429-7.671H127.6l4.429,7.671L127.6,81.5Z"
-								transform="translate(-86.619 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10275-2"
-								data-name="패스 10275"
-								d="M118.742,147.663l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10276-2"
-								data-name="패스 10276"
-								d="M118.742,213.824l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -150.396)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10277-2"
-								data-name="패스 10277"
-								d="M118.742,279.984l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10278-2"
-								data-name="패스 10278"
-								d="M118.742,346.145l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -250.66)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10279-2"
-								data-name="패스 10279"
-								d="M61.678,114.583l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10280-2"
-								data-name="패스 10280"
-								d="M61.678,180.744l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10281-2"
-								data-name="패스 10281"
-								d="M61.678,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L70.536,246.9Z"
-								transform="translate(-43.38 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10282-2"
-								data-name="패스 10282"
-								d="M61.678,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10283-2"
-								data-name="패스 10283"
-								d="M61.679,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-43.38 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10284-2"
-								data-name="패스 10284"
-								d="M233.055,81.5l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L241.913,81.5Z"
-								transform="translate(-173.237 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10285-2"
-								data-name="패스 10285"
-								d="M233.055,147.663l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10286-2"
-								data-name="패스 10286"
-								d="M233.055,213.824l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -150.396)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10287-2"
-								data-name="패스 10287"
-								d="M233.055,279.984l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10288-2"
-								data-name="패스 10288"
-								d="M233.055,346.145l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -250.66)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10289-2"
-								data-name="패스 10289"
-								d="M175.992,114.583l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10290-2"
-								data-name="패스 10290"
-								d="M175.992,180.744l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10291-2"
-								data-name="패스 10291"
-								d="M175.992,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L184.85,246.9Z"
-								transform="translate(-129.999 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10292-2"
-								data-name="패스 10292"
-								d="M175.992,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10293-2"
-								data-name="패스 10293"
-								d="M175.992,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-129.999 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10294-2"
-								data-name="패스 10294"
-								d="M290.3,114.583l-4.429-7.671L290.3,99.24h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10295-2"
-								data-name="패스 10295"
-								d="M290.3,180.744l-4.429-7.671L290.3,165.4h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10296-2"
-								data-name="패스 10296"
-								d="M290.3,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10297-2"
-								data-name="패스 10297"
-								d="M290.3,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10298-2"
-								data-name="패스 10298"
-								d="M290.3,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-216.617 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10299-2"
-								data-name="패스 10299"
-								d="M347.368,66.161l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10300-2"
-								data-name="패스 10300"
-								d="M4.429,0,0,7.671l4.429,7.671h8.858l4.429-7.671L13.286,0Z"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10301-2"
-								data-name="패스 10301"
-								d="M118.742,0l-4.429,7.671,4.429,7.671H127.6l4.429-7.671L127.6,0Z"
-								transform="translate(-86.619)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10302-2"
-								data-name="패스 10302"
-								d="M61.678,48.422l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10303-2"
-								data-name="패스 10303"
-								d="M233.055,0l-4.429,7.671,4.429,7.671h8.858l4.428-7.671L241.913,0Z"
-								transform="translate(-173.237)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10304-2"
-								data-name="패스 10304"
-								d="M175.992,48.422l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10305-2"
-								data-name="패스 10305"
-								d="M290.3,48.422l-4.429-7.671L290.3,33.08h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10306-2"
-								data-name="패스 10306"
-								d="M347.368,0l-4.429,7.671,4.429,7.671h8.858l4.429-7.671L356.226,0Z"
-								transform="translate(-259.856)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10307-2"
-								data-name="패스 10307"
-								d="M347.368,132.32l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10308-2"
-								data-name="패스 10308"
-								d="M347.368,198.481l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -150.395)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10309-2"
-								data-name="패스 10309"
-								d="M347.368,264.642l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10310-2"
-								data-name="패스 10310"
-								d="M347.368,330.8l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -250.659)"
-								fill="#e9e8e8"
-							/>
-						</g>
-					</g>
-
-
-					<g
-						id="그룹_884"
-						data-name="그룹 884"
-						transform="translate(-33 274.848)"
-					>
-						<g
-							id="그룹_881-3"
-							data-name="그룹 881"
-							transform="translate(966 3615)"
-						>
-							<path
-								id="패스_10269-3"
-								data-name="패스 10269"
-								d="M4.429,66.161,0,73.832,4.429,81.5h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10270-3"
-								data-name="패스 10270"
-								d="M4.429,132.32,0,139.992l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10271-3"
-								data-name="패스 10271"
-								d="M4.429,198.481,0,206.152l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -150.395)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10272-3"
-								data-name="패스 10272"
-								d="M4.429,264.642,0,272.313l4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(0 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10273-3"
-								data-name="패스 10273"
-								d="M4.429,330.8,0,338.474l4.429,7.671h8.858l4.429-7.671L13.286,330.8Z"
-								transform="translate(0 -250.659)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10274-3"
-								data-name="패스 10274"
-								d="M118.742,81.5l-4.429-7.671,4.429-7.671H127.6l4.429,7.671L127.6,81.5Z"
-								transform="translate(-86.619 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10275-3"
-								data-name="패스 10275"
-								d="M118.742,147.663l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10276-3"
-								data-name="패스 10276"
-								d="M118.742,213.824l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -150.396)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10277-3"
-								data-name="패스 10277"
-								d="M118.742,279.984l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10278-3"
-								data-name="패스 10278"
-								d="M118.742,346.145l-4.429-7.671,4.429-7.671H127.6l4.429,7.671-4.429,7.671Z"
-								transform="translate(-86.619 -250.66)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10279-3"
-								data-name="패스 10279"
-								d="M61.678,114.583l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10280-3"
-								data-name="패스 10280"
-								d="M61.678,180.744l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10281-3"
-								data-name="패스 10281"
-								d="M61.678,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L70.536,246.9Z"
-								transform="translate(-43.38 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10282-3"
-								data-name="패스 10282"
-								d="M61.678,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10283-3"
-								data-name="패스 10283"
-								d="M61.679,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-43.38 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10284-3"
-								data-name="패스 10284"
-								d="M233.055,81.5l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L241.913,81.5Z"
-								transform="translate(-173.237 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10285-3"
-								data-name="패스 10285"
-								d="M233.055,147.663l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10286-3"
-								data-name="패스 10286"
-								d="M233.055,213.824l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -150.396)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10287-3"
-								data-name="패스 10287"
-								d="M233.055,279.984l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10288-3"
-								data-name="패스 10288"
-								d="M233.055,346.145l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-173.237 -250.66)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10289-3"
-								data-name="패스 10289"
-								d="M175.992,114.583l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10290-3"
-								data-name="패스 10290"
-								d="M175.992,180.744l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10291-3"
-								data-name="패스 10291"
-								d="M175.992,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671L184.85,246.9Z"
-								transform="translate(-129.999 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10292-3"
-								data-name="패스 10292"
-								d="M175.992,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10293-3"
-								data-name="패스 10293"
-								d="M175.992,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-129.999 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10294-3"
-								data-name="패스 10294"
-								d="M290.3,114.583l-4.429-7.671L290.3,99.24h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -75.198)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10295-3"
-								data-name="패스 10295"
-								d="M290.3,180.744l-4.429-7.671L290.3,165.4h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -125.33)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10296-3"
-								data-name="패스 10296"
-								d="M290.3,246.9l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -175.461)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10297-3"
-								data-name="패스 10297"
-								d="M290.3,313.064l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -225.593)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10298-3"
-								data-name="패스 10298"
-								d="M290.3,363.883l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-216.617 -275.725)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10299-3"
-								data-name="패스 10299"
-								d="M347.368,66.161l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -50.132)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10300-3"
-								data-name="패스 10300"
-								d="M4.429,0,0,7.671l4.429,7.671h8.858l4.429-7.671L13.286,0Z"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10301-3"
-								data-name="패스 10301"
-								d="M118.742,0l-4.429,7.671,4.429,7.671H127.6l4.429-7.671L127.6,0Z"
-								transform="translate(-86.619)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10302-3"
-								data-name="패스 10302"
-								d="M61.678,48.422l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-43.38 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10303-3"
-								data-name="패스 10303"
-								d="M233.055,0l-4.429,7.671,4.429,7.671h8.858l4.428-7.671L241.913,0Z"
-								transform="translate(-173.237)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10304-3"
-								data-name="패스 10304"
-								d="M175.992,48.422l-4.429-7.671,4.429-7.671h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-129.999 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10305-3"
-								data-name="패스 10305"
-								d="M290.3,48.422l-4.429-7.671L290.3,33.08h8.858l4.429,7.671-4.429,7.671Z"
-								transform="translate(-216.617 -25.066)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10306-3"
-								data-name="패스 10306"
-								d="M347.368,0l-4.429,7.671,4.429,7.671h8.858l4.429-7.671L356.226,0Z"
-								transform="translate(-259.856)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10307-3"
-								data-name="패스 10307"
-								d="M347.368,132.32l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -100.263)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10308-3"
-								data-name="패스 10308"
-								d="M347.368,198.481l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -150.395)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10309-3"
-								data-name="패스 10309"
-								d="M347.368,264.642l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -200.527)"
-								fill="#e9e8e8"
-							/>
-							<path
-								id="패스_10310-3"
-								data-name="패스 10310"
-								d="M347.368,330.8l-4.429,7.671,4.429,7.671h8.858l4.429-7.671-4.429-7.671Z"
-								transform="translate(-259.856 -250.659)"
-								fill="#e9e8e8"
-							/>
-						</g>
-					</g>
-
-                    <HoneyComb />
+                    
+                    <SecondLibraryGroupBackground />
+                    
+                    
+                    <ThridLibraryGroupBackground />
 
 
 
 
-					<path
-						id="패스_10311"
-						data-name="패스 10311"
-						d="M5425.8,3648.5s55.823-.565,55.651,80.978,60.445,70.214,60.445,70.214"
-						transform="translate(-4389.799 -70.902)"
-						fill="none"
-						stroke="#e9e8e8"
-						stroke-linecap="round"
-						stroke-width="2"
-					/>
-					<path
-						id="패스_10312"
-						data-name="패스 10312"
-						d="M5425.8,3648.5s55.823-.375,55.651,53.682,60.445,46.546,60.445,46.546"
-						transform="translate(-4389.799 106.098)"
-						fill="none"
-						stroke="#e9e8e8"
-						stroke-linecap="round"
-						stroke-width="2"
-					/>
-					<path
-						id="패스_10313"
-						data-name="패스 10313"
-						d="M5425.8,3800.227s55.823.565,55.651-80.977,60.445-70.214,60.445-70.214"
-						transform="translate(-4389.799 141.371)"
-						fill="none"
-						stroke="#e9e8e8"
-						stroke-linecap="round"
-						stroke-width="2"
-					/>
-					<path
-						id="다각형_1"
-						data-name="다각형 1"
-						d="M5.5,0,11,14H0Z"
-						transform="translate(1156 3723.098) rotate(90)"
-						fill="#e9e8e8"
-					/>
-					<path
-						id="다각형_2"
-						data-name="다각형 2"
-						d="M5.5,0,11,14H0Z"
-						transform="translate(1156 3785.098) rotate(90)"
-						fill="#e9e8e8"
-					/>
-					<path
-						id="다각형_3"
-						data-name="다각형 3"
-						d="M5.5,0,11,14H0Z"
-						transform="translate(1156 3849.098) rotate(90)"
-						fill="#e9e8e8"
-					/>
+                    <MethodTextBackground />
+                    <MethodText />
+
+
+
+                    <HoneyCombBackground onHandleHoneyCombInfo={handleHoneyCombInfo}/>
+                    <HoneyComb honeyCombInfo={honeyCombInfo} />
+
+
+
+
+
+
+
+
+                    {/* <FirstLineBackground /> */}
+                    <FirstLine />
+
+                    {/* <FirstLineArrowBackground /> */}
+                    <FirstLineArrow />
+
+
+
 					<g
 						id="그룹_924"
 						data-name="그룹 924"
@@ -2689,6 +1460,8 @@ const Map4 = () => {
 							/>
 						</g>
 					</g>
+
+
 					<g
 						id="그룹_925"
 						data-name="그룹 925"
@@ -5245,216 +4018,17 @@ const Map4 = () => {
 							/>
 						</g>
 					</g>
-					<g
-						id="그룹_927"
-						data-name="그룹 927"
-						transform="translate(1272.215 3473.455)"
-					>
-						<path
-							id="다각형_4"
-							data-name="다각형 4"
-							d="M5.5,0,11,14H0Z"
-							transform="translate(111.568 0) rotate(62)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="다각형_5"
-							data-name="다각형 5"
-							d="M5.5,0,11,14H0Z"
-							transform="translate(111.804 43.199) rotate(65)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="다각형_6"
-							data-name="다각형 6"
-							d="M5.5,0,11,14H0Z"
-							transform="matrix(0.309, 0.951, -0.951, 0.309, 112.885, 86.748)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="다각형_7"
-							data-name="다각형 7"
-							d="M5.5,0,11,14H0Z"
-							transform="translate(111.798 130.287) rotate(71)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="패스_10338"
-							data-name="패스 10338"
-							d="M5680.675,3799.083s45.913-61.025,46.267-128.506,31.368-103.935,65.942-120.385"
-							transform="translate(-5680.675 -3544.358)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10339"
-							data-name="패스 10339"
-							d="M5680.675,3756.52s43.3-51.776,49.924-110.578,27.71-82.113,62.284-95.75"
-							transform="translate(-5680.675 -3501.795)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10340"
-							data-name="패스 10340"
-							d="M5680.675,3712.116s40.563-52.748,55.284-92.06,22.351-59.163,56.924-69.864"
-							transform="translate(-5680.675 -3457.391)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10341"
-							data-name="패스 10341"
-							d="M5680.675,3669.275a525.4,525.4,0,0,0,38.114-53.156c17.418-28.282,39.521-58.057,74.095-65.928"
-							transform="translate(-5680.675 -3414.55)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-					</g>
-					<g
-						id="그룹_929"
-						data-name="그룹 929"
-						transform="translate(1249 3694.485)"
-					>
-						<path
-							id="다각형_4-2"
-							data-name="다각형 4"
-							d="M5.5,0,11,14H0Z"
-							transform="translate(136.646) rotate(76)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="다각형_5-2"
-							data-name="다각형 5"
-							d="M5.5,0,11,14H0Z"
-							transform="matrix(0.087, 0.996, -0.996, 0.087, 137.494, 41.94)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="다각형_6-2"
-							data-name="다각형 6"
-							d="M5.5,0,11,14H0Z"
-							transform="matrix(0.052, 0.999, -0.999, 0.052, 137.888, 81.999)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="다각형_7-2"
-							data-name="다각형 7"
-							d="M5.5,0,11,14H0Z"
-							transform="translate(137.061 126.205) rotate(89)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="패스_10338-2"
-							data-name="패스 10338"
-							d="M5656.765,3641.623s35.572-9.377,64.681-43.248,39.064-38.921,69.827-48.183"
-							transform="translate(-5655.848 -3544.47)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10339-2"
-							data-name="패스 10339"
-							d="M5680.674,3599.113s30.788-2.9,63.308-21.216,55.49-27.981,72.116-27.705"
-							transform="translate(-5680.674 -3501.907)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10340-2"
-							data-name="패스 10340"
-							d="M5680.674,3554.709s39.58-.068,68.646-4.516,53.3-5.895,64.986-4.969"
-							transform="translate(-5680.674 -3457.503)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10341-2"
-							data-name="패스 10341"
-							d="M5680.674,3550.192s10.3-4.488,50.037,14.408,85.634,20.984,84.649,20.158"
-							transform="translate(-5680.674 -3452.986)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-					</g>
-					<g
-						id="그룹_928"
-						data-name="그룹 928"
-						transform="translate(1254.149 3853.948)"
-					>
-						<path
-							id="다각형_4-3"
-							data-name="다각형 4"
-							d="M5.5,0,11,14H0Z"
-							transform="matrix(-0.469, 0.883, -0.883, -0.469, 134.799, 186.163)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="다각형_5-3"
-							data-name="다각형 5"
-							d="M5.5,0,11,14H0Z"
-							transform="translate(134.519 142.707) rotate(115)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="다각형_6-3"
-							data-name="다각형 6"
-							d="M5.5,0,11,14H0Z"
-							transform="matrix(-0.309, 0.951, -0.951, -0.309, 134.351, 98.666)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="패스_10342"
-							data-name="패스 10342"
-							d="M5.5,0,11,14H0Z"
-							transform="translate(133.445 55.187) rotate(109)"
-							fill="#e9e8e8"
-						/>
-						<path
-							id="패스_10338-3"
-							data-name="패스 10338"
-							d="M5661,3609.043s66.427,2.174,66.768,69.656,30.209,103.935,63.507,120.385"
-							transform="translate(-5660.996 -3609.042)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10339-3"
-							data-name="패스 10339"
-							d="M5661.634,3609.3s65.609,1.793,72.026,60.7,24.767,73.119,58.249,86.78"
-							transform="translate(-5661.634 -3609.299)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10340-3"
-							data-name="패스 10340"
-							d="M5661.5,3609.779s60.7,2.838,74.937,42.432,21.893,49.863,55.338,60.641"
-							transform="translate(-5661.503 -3609.779)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-						<path
-							id="패스_10341-3"
-							data-name="패스 10341"
-							d="M5661.595,3609.814s50.073,2.113,73.229,27.406,23.575,24.854,57.047,32.827"
-							transform="translate(-5661.595 -3609.813)"
-							fill="none"
-							stroke="#e9e8e8"
-							stroke-width="1"
-						/>
-					</g>
+
+                    {/* <FirstGroupBackground /> */}
+                    <FirstGroup />
+
+                    {/* <SecondGroupBackground /> */}
+                    <SecondGroup />
+
+                    {/* <ThirdGroupBackground /> */}
+                    <ThirdGroup />
+
+
 					<line
 						id="선_79"
 						data-name="선 79"
@@ -5477,7 +4051,7 @@ const Map4 = () => {
 						stroke-width="1"
 						stroke-dasharray="1 5"
 					/>
-					<rect
+					{/* <rect
 						id="사각형_467"
 						data-name="사각형 467"
 						width="141"
@@ -5692,7 +4266,15 @@ const Map4 = () => {
 						rx="5"
 						transform="translate(1594 4036)"
 						fill="#e9e8e8"
-					/>
+
+
+					/> */}
+
+                    <Rectangles />
+
+
+
+
 					<g
 						id="그룹_933"
 						data-name="그룹 933"
@@ -5731,14 +4313,20 @@ const Map4 = () => {
 													data-name="Mask"
 													d="M0,0H13.4V14.894L6.7,12.4,0,14.894Z"
 													fill="url(#linear-gradient)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<path
 													id="Mask-10"
 													data-name="Mask"
 													d="M0,0H13.4V14.894L6.7,12.4,0,14.894Z"
 													fill="rgba(216,216,216,0.05)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 											</g>
 											<g
@@ -5783,12 +4371,22 @@ const Map4 = () => {
 														rx="10.372"
 														ry="10.372"
 														fill="none"
-														style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+														style={{
+															mixBlendMode:
+																"overlay",
+															isolation:
+																"isolate",
+														}}
 													/>
 													<g
 														transform="matrix(1, 0, 0, 1, -916.94, -167.21)"
 														filter="url(#Oval_17-2)"
-														style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+														style={{
+															mixBlendMode:
+																"overlay",
+															isolation:
+																"isolate",
+														}}
 													>
 														<ellipse
 															id="Oval_17-12"
@@ -5829,7 +4427,10 @@ const Map4 = () => {
 													cy="10.372"
 													r="10.372"
 													fill="url(#linear-gradient-2)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<circle
 													id="Mask-14"
@@ -5838,7 +4439,10 @@ const Map4 = () => {
 													cy="10.372"
 													r="10.372"
 													fill="rgba(216,216,216,0.03)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 											</g>
 											<g
@@ -5864,7 +4468,10 @@ const Map4 = () => {
 											<g
 												transform="matrix(1, 0, 0, 1, -919.02, -168.17)"
 												filter="url(#Combined_Shape)"
-												style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+												style={{
+													mixBlendMode: "overlay",
+													isolation: "isolate",
+												}}
 											>
 												<path
 													id="Combined_Shape-8"
@@ -5911,12 +4518,18 @@ const Map4 = () => {
 													d="M1.737,9.055c.031-.185.059-.353.088-.521l.367-2.152c.02-.117.044-.234.057-.352a.139.139,0,0,0-.034-.1q-.769-.753-1.542-1.5L.112,3.882a.3.3,0,0,1-.1-.322.312.312,0,0,1,.279-.213c.929-.133,1.858-.269,2.789-.4a.277.277,0,0,0,.245-.175c.425-.867.86-1.73,1.29-2.594A.267.267,0,0,1,4.858,0a.235.235,0,0,1,.231.133C5.2.343,5.3.554,5.4.765q.525,1.058,1.051,2.116a.1.1,0,0,0,.063.048q1.028.152,2.057.3l.87.128a.3.3,0,0,1,.26.214.291.291,0,0,1-.091.31L8.323,5.137c-.272.265-.544.53-.818.792a.109.109,0,0,0-.029.113L7.719,7.47q.129.758.259,1.515a.274.274,0,0,1-.4.289l-1.154-.6q-.748-.392-1.5-.785a.115.115,0,0,0-.122,0q-1.31.69-2.622,1.378a.274.274,0,0,1-.4-.084.628.628,0,0,1-.045-.125"
 													transform="translate(0 0)"
 													fill="url(#linear-gradient-4)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<g
 													transform="matrix(1, 0, 0, 1, -922.56, -171.71)"
 													filter="url(#Fill_1-2)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												>
 													<path
 														id="Fill_1-10"
@@ -5933,6 +4546,8 @@ const Map4 = () => {
 							</g>
 						</g>
 					</g>
+
+
 					<g
 						id="그룹_934"
 						data-name="그룹 934"
@@ -5975,14 +4590,20 @@ const Map4 = () => {
 													data-name="Mask"
 													d="M0,0H14.379V15.977L7.19,13.3,0,15.977Z"
 													fill="url(#linear-gradient)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<path
 													id="Mask-18"
 													data-name="Mask"
 													d="M0,0H14.379V15.977L7.19,13.3,0,15.977Z"
 													fill="rgba(216,216,216,0.05)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 											</g>
 											<g
@@ -6027,12 +4648,22 @@ const Map4 = () => {
 														rx="11.126"
 														ry="11.126"
 														fill="none"
-														style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+														style={{
+															mixBlendMode:
+																"overlay",
+															isolation:
+																"isolate",
+														}}
 													/>
 													<g
 														transform="matrix(1, 0, 0, 1, -916.94, -294.2)"
 														filter="url(#Oval_17-4)"
-														style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+														style={{
+															mixBlendMode:
+																"overlay",
+															isolation:
+																"isolate",
+														}}
 													>
 														<ellipse
 															id="Oval_17-18"
@@ -6073,7 +4704,10 @@ const Map4 = () => {
 													cy="11.126"
 													r="11.126"
 													fill="url(#linear-gradient-2)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<circle
 													id="Mask-22"
@@ -6082,7 +4716,10 @@ const Map4 = () => {
 													cy="11.126"
 													r="11.126"
 													fill="rgba(216,216,216,0.03)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 											</g>
 											<g
@@ -6109,7 +4746,10 @@ const Map4 = () => {
 											<g
 												transform="matrix(1, 0, 0, 1, -919.17, -295.23)"
 												filter="url(#Combined_Shape-3)"
-												style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+												style={{
+													mixBlendMode: "overlay",
+													isolation: "isolate",
+												}}
 											>
 												<path
 													id="Combined_Shape-11"
@@ -6156,12 +4796,18 @@ const Map4 = () => {
 													d="M1.863,9.714c.033-.2.064-.379.094-.559l.393-2.309c.021-.126.047-.251.062-.377a.149.149,0,0,0-.037-.109Q1.551,5.551.722,4.749l-.6-.584a.317.317,0,0,1-.1-.346.334.334,0,0,1,.3-.228c1-.143,1.994-.289,2.991-.425a.3.3,0,0,0,.263-.188c.456-.93.922-1.855,1.384-2.783A.286.286,0,0,1,5.212,0,.252.252,0,0,1,5.46.143c.114.225.226.451.338.677q.563,1.135,1.127,2.27a.107.107,0,0,0,.068.052Q8.1,3.3,9.2,3.463l.933.137a.319.319,0,0,1,.279.229.312.312,0,0,1-.1.333L8.928,5.511c-.292.284-.584.568-.878.85a.117.117,0,0,0-.031.121L8.28,8.013q.139.813.278,1.626a.294.294,0,0,1-.434.31L6.886,9.3q-.8-.42-1.6-.842a.124.124,0,0,0-.131,0Q3.744,9.2,2.337,9.938a.294.294,0,0,1-.425-.09.673.673,0,0,1-.048-.134"
 													transform="translate(0 0)"
 													fill="url(#linear-gradient-4)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<g
 													transform="matrix(1, 0, 0, 1, -922.97, -299.02)"
 													filter="url(#Fill_1-4)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												>
 													<path
 														id="Fill_1-14"
@@ -6178,6 +4824,8 @@ const Map4 = () => {
 							</g>
 						</g>
 					</g>
+
+
 					<g
 						id="그룹_935"
 						data-name="그룹 935"
@@ -6220,14 +4868,20 @@ const Map4 = () => {
 													data-name="Mask"
 													d="M0,0H14.379V15.977L7.19,13.3,0,15.977Z"
 													fill="url(#linear-gradient)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<path
 													id="Mask-26"
 													data-name="Mask"
 													d="M0,0H14.379V15.977L7.19,13.3,0,15.977Z"
 													fill="rgba(216,216,216,0.05)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 											</g>
 											<g
@@ -6272,12 +4926,22 @@ const Map4 = () => {
 														rx="11.126"
 														ry="11.126"
 														fill="none"
-														style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+														style={{
+															mixBlendMode:
+																"overlay",
+															isolation:
+																"isolate",
+														}}
 													/>
 													<g
 														transform="matrix(1, 0, 0, 1, -916.94, -642.2)"
 														filter="url(#Oval_17-6)"
-														style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+														style={{
+															mixBlendMode:
+																"overlay",
+															isolation:
+																"isolate",
+														}}
 													>
 														<ellipse
 															id="Oval_17-24"
@@ -6319,7 +4983,10 @@ const Map4 = () => {
 													r="11.126"
 													fill="url(#linear-gradient-2)"
 													// style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
-                                                    style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<circle
 													id="Mask-30"
@@ -6328,7 +4995,10 @@ const Map4 = () => {
 													cy="11.126"
 													r="11.126"
 													fill="rgba(216,216,216,0.03)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 											</g>
 											<g
@@ -6355,7 +5025,10 @@ const Map4 = () => {
 											<g
 												transform="matrix(1, 0, 0, 1, -919.17, -643.23)"
 												filter="url(#Combined_Shape-5)"
-												style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+												style={{
+													mixBlendMode: "overlay",
+													isolation: "isolate",
+												}}
 											>
 												<path
 													id="Combined_Shape-14"
@@ -6402,12 +5075,18 @@ const Map4 = () => {
 													d="M1.863,9.714c.033-.2.064-.379.094-.559l.393-2.309c.021-.126.047-.251.062-.377a.149.149,0,0,0-.037-.109Q1.551,5.551.722,4.749l-.6-.584a.317.317,0,0,1-.1-.346.334.334,0,0,1,.3-.228c1-.143,1.994-.289,2.991-.425a.3.3,0,0,0,.263-.188c.456-.93.922-1.855,1.384-2.783A.286.286,0,0,1,5.212,0,.252.252,0,0,1,5.46.143c.114.225.226.451.338.677q.563,1.135,1.127,2.27a.107.107,0,0,0,.068.052Q8.1,3.3,9.2,3.463l.933.137a.319.319,0,0,1,.279.229.312.312,0,0,1-.1.333L8.928,5.511c-.292.284-.584.568-.878.85a.117.117,0,0,0-.031.121L8.28,8.013q.139.813.278,1.626a.294.294,0,0,1-.434.31L6.886,9.3q-.8-.42-1.6-.842a.124.124,0,0,0-.131,0Q3.744,9.2,2.337,9.938a.294.294,0,0,1-.425-.09.673.673,0,0,1-.048-.134"
 													transform="translate(0 0)"
 													fill="url(#linear-gradient-4)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												/>
 												<g
 													transform="matrix(1, 0, 0, 1, -922.97, -647.02)"
 													filter="url(#Fill_1-6)"
-													style={{mixBlendMode: 'overlay', isolation: 'isolate'}}
+													style={{
+														mixBlendMode: "overlay",
+														isolation: "isolate",
+													}}
 												>
 													<path
 														id="Fill_1-18"
@@ -6426,9 +5105,7 @@ const Map4 = () => {
 					</g>
 				</g>
 
-                {/* <HoneyComb /> */}
-
-
+				{/* <HoneyComb /> */}
 			</svg>
 		</>
 	);
