@@ -8,6 +8,8 @@ const pathArr = [
 ];
 
 const FirstLine = ({ init, rest, data }) => {
+
+    console.log('firstLine render');
 	const lineRef = useRef(null);
 	const [length, setLength] = useState(null);
 
@@ -16,8 +18,8 @@ const FirstLine = ({ init, rest, data }) => {
 	}, [data]);
 
 	const animatedStyle = useSpring({
-		from: { length },
-		to: { length: 0 },
+		to: { length },
+		from: { length: 0 },
 		delay: 2000,
 		config: { duration: 1000 },
 		reset: init,

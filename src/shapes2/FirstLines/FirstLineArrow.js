@@ -1,13 +1,14 @@
 import React from "react";
 import { animated, useSpring } from "react-spring";
 
-const FirstLineArrow = () => {
+const FirstLineArrow = ({ init }) => {
 
     const animationFillStyle = useSpring({
 		from: { fillColor: "transparent" },
 		to: { fillColor: "#1210c9" },
 		config: { duration: 500 },
-        delay: 3000,
+        delay: 3300,
+        reset: init
 	});
 
 	return (
@@ -37,4 +38,4 @@ const FirstLineArrow = () => {
 	);
 };
 
-export default FirstLineArrow;
+export default React.memo(FirstLineArrow);

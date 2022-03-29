@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { animated, useSpring } from "react-spring";
 
-const FirstGroup = () => {
+const FirstGroup = ({ init }) => {
 
     const firstLineRef = useRef(null);
     const secondLineRef = useRef(null);
@@ -27,6 +27,7 @@ const FirstGroup = () => {
 		to: { firstLength: 0 },
 		delay: 5500,
 		config: { duration: 1000 },
+        reset: init
 	});
 
     const secondAnimatedStyle = useSpring({
@@ -34,6 +35,7 @@ const FirstGroup = () => {
 		to: { secondLength: 0 },
 		delay: 5500,
 		config: { duration: 1000 },
+        reset: init
 	});
 
     const thirdAnimatedStyle = useSpring({
@@ -41,6 +43,7 @@ const FirstGroup = () => {
 		to: { thirdLength: 0 },
 		delay: 5500,
 		config: { duration: 1000 },
+        reset: init
 	});
 
     const fourthAnimatedStyle = useSpring({
@@ -48,6 +51,7 @@ const FirstGroup = () => {
 		to: { fourthLength: 0 },
 		delay: 5500,
 		config: { duration: 1000 },
+        reset: init
 	});
 
     const animationFillStyle = useSpring({
@@ -55,6 +59,7 @@ const FirstGroup = () => {
 		to: { fillColor: "#1210c9" },
 		config: { duration: 300 },
         delay: 6500,
+        reset: init
 	});
 
 	return (
@@ -152,4 +157,4 @@ const FirstGroup = () => {
 	);
 };
 
-export default FirstGroup;
+export default React.memo(FirstGroup);

@@ -1,12 +1,13 @@
 import React from "react";
 import { animated, useSpring } from "react-spring";
 
-const HoneyCombUnit = ({ element, elementIndex }) => {
+const HoneyCombUnit = ({ element, elementIndex, init }) => {
 
 	const animationFillStyle = useSpring({
 		from: { fillColor: "#e9e8e8" },
 		to: { fillColor: "#1210c9" },
 		config: { duration: 3000 },
+        reset: init
 	});
 
 	return (

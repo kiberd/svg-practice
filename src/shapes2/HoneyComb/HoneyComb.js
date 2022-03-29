@@ -1,7 +1,7 @@
 import React from "react";
 import HoneyCombUnit from "./HoneyCombUnit";
 
-const HoneyComb = ({ honeyCombInfo }) => {
+const HoneyComb = ({ honeyCombInfo, init }) => {
 	return (
 		<>
 			{honeyCombInfo &&
@@ -14,6 +14,7 @@ const HoneyComb = ({ honeyCombInfo }) => {
 											key={elementIndex}
 											element={element}
 											elementIndex={honeyCombInfo.colorIndexInfo[objIndex][elementIndex]}
+                                            init={init}
 										/>
 								))
                             }

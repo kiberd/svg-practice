@@ -1,28 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { animated, useSpring } from "react-spring";
 
+import ThridLibraryGroupBackground from "./ThridLibraryGroupBackground";
+
 const libraryArry = [
-	"Naïve Bayes",
-	"Decision Tree",
-	"Random Forest",
-	"K Nearest Neighbors",
-	"Linear Regression",
-	"Logistic Regression",
-	"Lasso Regression",
-	"Multiple Regression",
-	"K-Means",
-	"Hierarchical Clustering",
-	"FCM Algorithm",
-	"EM Algorithm",
+    "Naïve Bayes", "Decision Tree", "Random Forest", "K Nearest Neighbors",
+    "Linear Regression", "Logistic Regression", "Lasso Regression",  "Multiple Regression",
+    "K-Means", "Hierarchical Clustering", "FCM Algorithm", "EM Algorithm"
 ];
 
-const FirstLibrary = ({ rankInfo, init }) => {
+const ThirdLibrary = ({ rankInfo, init }) => {
 	const animationFillStyle = useSpring({
 		from: { fillColor: "#5a5a77", fontWeight: "400" },
 		to: { fillColor: "#1210c9", fontWeight: "800" },
 		config: { duration: 1500 },
 		delay: 9500,
-		reset: init,
+        reset: init
 	});
 
     const animationShowStyle = useSpring({
@@ -34,30 +27,30 @@ const FirstLibrary = ({ rankInfo, init }) => {
 
 	const [matchArry, setMatchArry] = useState();
 
-	// 0, 1, 2, 3
+	// 8, 9, 10, 11
 	useEffect(() => {
 		if (rankInfo) {
-			const indexArry = [0, 1, 2, 3];
-			const matchIndex = [];
-			const matchArry = [false, false, false, false];
+			const indexArry = [8, 9, 10, 11];
+            const matchIndex = [];
+            const matchArry = [false, false, false, false];
 
 			Object.values(rankInfo).map((rank) => {
 				indexArry.map((index, idx) => {
 					if (index === rank) {
 						matchIndex.push(idx);
-					}
+					} 
 				});
 			});
 
-			matchIndex.map((index) => {
-				matchArry[index] = true;
-			});
+            matchIndex.map((index) => {
+                matchArry[index] = true;
+            });
 
 			setMatchArry(matchArry);
 		}
 	}, [rankInfo]);
 
-	const [libraries, setLibraries] = useState();
+    const [libraries, setLibraries] = useState();
 
 	// Set random library words
 	useEffect(() => {
@@ -65,17 +58,18 @@ const FirstLibrary = ({ rankInfo, init }) => {
 		tempLibraries.sort(() => Math.random() - 0.5);
 		setLibraries(tempLibraries);
 	}, []);
-
+    
 	return (
 		<>
-			{libraries && matchArry ? (
+			{matchArry ? (
 				<g
-					id="그룹_923"
-					data-name="그룹 923"
-					transform="translate(-15 -66.902)"
+					id="그룹_885"
+					data-name="그룹 885"
+					transform="translate(-44 -14.902)"
 				>
 					<animated.text
-						transform="translate(1434 3552)"
+						id="K-Means"
+						transform="translate(1463 3930)"
 						fill={matchArry[0] ? animationFillStyle.fillColor : "#5a5a77"}
 						font-size="14"
 						font-family="Pretendard-Regular, Pretendard"
@@ -83,11 +77,13 @@ const FirstLibrary = ({ rankInfo, init }) => {
                         style={animationShowStyle}
 					>
 						<tspan x="0" y="0">
-							{libraries[0]}
+                            {libraries[0]}
 						</tspan>
 					</animated.text>
 					<animated.text
-						transform="translate(1434 3595)"
+						id="Hierarchical_Clustering"
+						data-name="Hierarchical Clustering"
+						transform="translate(1463 3973)"
 						fill={matchArry[1] ? animationFillStyle.fillColor : "#5a5a77"}
 						font-size="14"
 						font-family="Pretendard-Regular, Pretendard"
@@ -95,23 +91,27 @@ const FirstLibrary = ({ rankInfo, init }) => {
                         style={animationShowStyle}
 					>
 						<tspan x="0" y="0">
-							{libraries[1]}
+                            {libraries[1]}
 						</tspan>
 					</animated.text>
 					<animated.text
-						transform="translate(1434 3638)"
+						id="FCM_Algorithm"
+						data-name="FCM Algorithm"
+						transform="translate(1463 4016)"
 						fill={matchArry[2] ? animationFillStyle.fillColor : "#5a5a77"}
 						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
+						font-family="Pretendard-Regular, Pretendard"
 						fontWeight={matchArry[2] ? animationFillStyle.fontWeight : "0"}
                         style={animationShowStyle}
 					>
 						<tspan x="0" y="0">
-							{libraries[2]}
+                            {libraries[2]}
 						</tspan>
 					</animated.text>
 					<animated.text
-						transform="translate(1434 3681)"
+						id="EM_Algorithm"
+						data-name="EM Algorithm"
+						transform="translate(1463 4059)"
 						fill={matchArry[3] ? animationFillStyle.fillColor : "#5a5a77"}
 						font-size="14"
 						font-family="Pretendard-Regular, Pretendard"
@@ -119,7 +119,7 @@ const FirstLibrary = ({ rankInfo, init }) => {
                         style={animationShowStyle}
 					>
 						<tspan x="0" y="0">
-							{libraries[3]}
+                            {libraries[3]}
 						</tspan>
 					</animated.text>
 				</g>
@@ -128,4 +128,4 @@ const FirstLibrary = ({ rankInfo, init }) => {
 	);
 };
 
-export default FirstLibrary;
+export default ThirdLibrary;

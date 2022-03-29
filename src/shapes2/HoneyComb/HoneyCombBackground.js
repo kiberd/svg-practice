@@ -5,14 +5,14 @@ const rand = (min, max) => {
 };
 
 
-const HoneyCombBackground = ( { onHandleHoneyCombInfo } ) => {
+const HoneyCombBackground = ( { onHandleHoneyCombInfo, rest } ) => {
 
     const groupRef = useRef(null);
 
     const [honeyCombInfo, setHoneyCombInfo] = useState();
 
 	useEffect(() => {
-		if (groupRef && groupRef.current) {
+		if (groupRef && groupRef.current && !rest) {
 
 			const colorIndexInfo = [ [], [], [] ];
 			const elementsInfo = [];
@@ -44,7 +44,7 @@ const HoneyCombBackground = ( { onHandleHoneyCombInfo } ) => {
 
             setHoneyCombInfo(honeyCombObj);
 		}
-	}, [groupRef]);
+	}, [groupRef, rest]);
 
     useEffect(() => {
 
@@ -980,4 +980,4 @@ const HoneyCombBackground = ( { onHandleHoneyCombInfo } ) => {
 	);
 };
 
-export default HoneyCombBackground;
+export default React.memo(HoneyCombBackground);

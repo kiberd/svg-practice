@@ -16,9 +16,8 @@ function App() {
 
 			{/* <Map/> */}
 			{/* <Map2 /> */}
-            {/* <Map3 reset={reset}/> */}
+            {/* <Map3 /> */}
             <Map4 />
-
             {/* <Mobile/> */}
 
 		</>

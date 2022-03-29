@@ -1,23 +1,11 @@
 import React from "react";
+import TextLoop from "@kelvinkhai/react-text-loop";
 
 const MethodTextBackground = () => {
 	return (
-        // 5a5a77
-        // 5a5a77
+		// 5a5a77
+		// 5a5a77
 		<>
-			<text
-				id="AI_Supervision_Method"
-				data-name="AI Supervision Method"
-				transform="translate(1159 3388.5)"
-				fill="#5a5a77"
-				font-size="14"
-				font-family="Pretendard-Bold, Pretendard"
-				font-weight="700"
-			>
-				<tspan x="0" y="0">
-					AI Supervision Method
-				</tspan>
-			</text>
 			<text
 				id="P4P"
 				transform="translate(1159 3485.098)"

@@ -16,13 +16,13 @@ const libraryArry = [
 	"EM Algorithm",
 ];
 
-const FirstLibrary = ({ rankInfo, init }) => {
+const SecondLibrary = ({ rankInfo, init }) => {
 	const animationFillStyle = useSpring({
 		from: { fillColor: "#5a5a77", fontWeight: "400" },
 		to: { fillColor: "#1210c9", fontWeight: "800" },
 		config: { duration: 1500 },
 		delay: 9500,
-		reset: init,
+        reset: init
 	});
 
     const animationShowStyle = useSpring({
@@ -34,30 +34,30 @@ const FirstLibrary = ({ rankInfo, init }) => {
 
 	const [matchArry, setMatchArry] = useState();
 
-	// 0, 1, 2, 3
+	// 4, 5, 6, 7
 	useEffect(() => {
 		if (rankInfo) {
-			const indexArry = [0, 1, 2, 3];
-			const matchIndex = [];
-			const matchArry = [false, false, false, false];
+			const indexArry = [4, 5, 6, 7];
+            const matchIndex = [];
+            const matchArry = [false, false, false, false];
 
 			Object.values(rankInfo).map((rank) => {
 				indexArry.map((index, idx) => {
 					if (index === rank) {
 						matchIndex.push(idx);
-					}
+					} 
 				});
 			});
 
-			matchIndex.map((index) => {
-				matchArry[index] = true;
-			});
+            matchIndex.map((index) => {
+                matchArry[index] = true;
+            });
 
 			setMatchArry(matchArry);
 		}
 	}, [rankInfo]);
 
-	const [libraries, setLibraries] = useState();
+    const [libraries, setLibraries] = useState();
 
 	// Set random library words
 	useEffect(() => {
@@ -70,12 +70,14 @@ const FirstLibrary = ({ rankInfo, init }) => {
 		<>
 			{libraries && matchArry ? (
 				<g
-					id="그룹_923"
-					data-name="그룹 923"
-					transform="translate(-15 -66.902)"
+					id="그룹_886"
+					data-name="그룹 886"
+					transform="translate(-44 -40.902)"
 				>
 					<animated.text
-						transform="translate(1434 3552)"
+						id="Linear_Regression"
+						data-name="Linear Regression"
+						transform="translate(1463 3741)"
 						fill={matchArry[0] ? animationFillStyle.fillColor : "#5a5a77"}
 						font-size="14"
 						font-family="Pretendard-Regular, Pretendard"
@@ -83,11 +85,13 @@ const FirstLibrary = ({ rankInfo, init }) => {
                         style={animationShowStyle}
 					>
 						<tspan x="0" y="0">
-							{libraries[0]}
+                            {libraries[0]}
 						</tspan>
 					</animated.text>
 					<animated.text
-						transform="translate(1434 3595)"
+						id="Logistic_Regression"
+						data-name="Logistic Regression"
+						transform="translate(1463 3784)"
 						fill={matchArry[1] ? animationFillStyle.fillColor : "#5a5a77"}
 						font-size="14"
 						font-family="Pretendard-Regular, Pretendard"
@@ -95,23 +99,27 @@ const FirstLibrary = ({ rankInfo, init }) => {
                         style={animationShowStyle}
 					>
 						<tspan x="0" y="0">
-							{libraries[1]}
+                            {libraries[1]}
 						</tspan>
 					</animated.text>
 					<animated.text
-						transform="translate(1434 3638)"
+						id="Lasso_Regression"
+						data-name="Lasso Regression"
+						transform="translate(1463 3827)"
 						fill={matchArry[2] ? animationFillStyle.fillColor : "#5a5a77"}
 						font-size="14"
-						font-family="Pretendard-Bold, Pretendard"
+						font-family="Pretendard-Regular, Pretendard"
 						fontWeight={matchArry[2] ? animationFillStyle.fontWeight : "0"}
                         style={animationShowStyle}
 					>
 						<tspan x="0" y="0">
-							{libraries[2]}
+                            {libraries[2]}
 						</tspan>
 					</animated.text>
 					<animated.text
-						transform="translate(1434 3681)"
+						id="Multiple_Regression"
+						data-name="Multiple Regression"
+						transform="translate(1463 3870)"
 						fill={matchArry[3] ? animationFillStyle.fillColor : "#5a5a77"}
 						font-size="14"
 						font-family="Pretendard-Regular, Pretendard"
@@ -119,7 +127,7 @@ const FirstLibrary = ({ rankInfo, init }) => {
                         style={animationShowStyle}
 					>
 						<tspan x="0" y="0">
-							{libraries[3]}
+                            {libraries[3]}
 						</tspan>
 					</animated.text>
 				</g>
@@ -128,4 +136,4 @@ const FirstLibrary = ({ rankInfo, init }) => {
 	);
 };
 
-export default FirstLibrary;
+export default SecondLibrary;
